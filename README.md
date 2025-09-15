@@ -7,7 +7,7 @@ https://leb-lingo-hub.lovable.app/
 
 https://aistudio.google.com/app/prompts/new_chat  
 
-https://www.perplexity.ai/search/i-want-to-create-an-angular-we-lK57gNg5SkmltP.RlCHYEA?0=d:
-v1) https://www.perplexity.ai/apps/94ae7b80-d839-4a49-a5b4-ff919421d810
-v2) https://www.perplexity.ai/apps/b5cde106-6883-4ec4-8fc2-50007bfaa9b7
-v3) https://www.perplexity.ai/apps/1f4f1810-5637-4d47-a3bc-ddd0dd8b5c77
+https://www.perplexity.ai/search/i-want-to-create-an-angular-we-lK57gNg5SkmltP.RlCHYEA?0=d:  
+v1) https://www.perplexity.ai/apps/94ae7b80-d839-4a49-a5b4-ff919421d810  
+v2) https://www.perplexity.ai/apps/b5cde106-6883-4ec4-8fc2-50007bfaa9b7  
+v3) https://www.perplexity.ai/apps/1f4f1810-5637-4d47-a3bc-ddd0dd8b5c77  

@@ -1,11 +1,16 @@
 import { Routes } from '@angular/router';
+import { LessonListComponent } from './features/lessons/lesson-list.component';
+import { LessonDetailComponent } from './features/lessons/lesson-detail.component';
+import { NewsComponent } from './features/news/news.component';
+import { AudioComponent } from './features/audio/audio.component';
+import { SocialComponent } from './features/social/social.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'lessons' },
-  { path: 'lessons', loadComponent: () => import('./features/lessons/lesson-list.component').then(m => m.LessonListComponent) },
-  { path: 'lessons/:id', loadComponent: () => import('./features/lessons/lesson-detail.component').then(m => m.LessonDetailComponent) },
-  { path: 'news', loadComponent: () => import('./features/news/news.component').then(m => m.NewsComponent) },
-  { path: 'audio', loadComponent: () => import('./features/audio/audio.component').then(m => m.AudioComponent) },
-  { path: 'social', loadComponent: () => import('./features/social/social.component').then(m => m.SocialComponent) },
+  { path: 'lessons', component: LessonListComponent },
+  { path: 'lessons/:id', component: LessonDetailComponent },
+  { path: 'news', component: NewsComponent },
+  { path: 'audio', component: AudioComponent },
+  { path: 'social', component: SocialComponent },
   { path: '**', redirectTo: 'lessons' }
 ];

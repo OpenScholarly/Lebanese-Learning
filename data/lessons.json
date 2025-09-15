@@ -1,0 +1,24 @@
+[
+  {
+    "id": "greetings-basic",
+    "title": "Basic Greetings",
+    "level": 1,
+    "description": "Common everyday greetings in Lebanese Arabic.",
+    "items": [
+      {"arabic": "مرحبا (marḥaba)", "english": "Hello", "audioUrl": "/media/audio/hello.mp3"},
+      {"arabic": "كيفك؟ (kīfak?/kīfik?)", "english": "How are you?"},
+      {"arabic": "منيح / منيحة (mnīḥ / mnīḥa)", "english": "Good / Fine"}
+    ]
+  },
+  {
+    "id": "numbers-1-10",
+    "title": "Numbers 1–10",
+    "level": 1,
+    "description": "Counting from one to ten.",
+    "items": [
+      {"arabic": "واحد (wāḥad)", "english": "One"},
+      {"arabic": "اثنين (tnēn)", "english": "Two"},
+      {"arabic": "ثلاثة (tlēte)", "english": "Three"}
+    ]
+  }
+]

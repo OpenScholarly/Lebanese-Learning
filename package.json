@@ -1,0 +1,17 @@
+{
+  "name": "lebanese-learning",
+  "private": true,
+  "workspaces": ["frontend", "backend", "scripts"],
+  "scripts": {
+    "build": "npm -w frontend run build && npm -w backend run build",
+    "dev": "concurrently \"npm -w backend run dev\" \"npm -w frontend start\"",
+    "start": "npm -w backend start",
+    "bootstrap": "echo Use 'npm install' at repo root. Postinstall removed to prevent recursion."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "overrides": {
+    "undici": "6.19.8"
+  }
+}

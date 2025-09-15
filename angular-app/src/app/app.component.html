@@ -1,0 +1,63 @@
+<!-- Navigation Sidebar -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2>LebaneseLingo Pro</h2>
+        <button class="close-btn" id="closeSidebar">&times;</button>
+    </div>
+    <ul class="nav-menu">
+        <li><a href="#" routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+            <span>🏠</span> Dashboard
+        </a></li>
+        <li><a href="#" routerLink="/vocabulary" routerLinkActive="active" class="nav-link">
+            <span>📚</span> Vocabulary (130+)
+        </a></li>
+        <li><a href="#" routerLink="/grammar" routerLinkActive="active" class="nav-link">
+            <span>📖</span> Grammar
+        </a></li>
+        <li><a href="#" routerLink="/radio" routerLinkActive="active" class="nav-link">
+            <span>📻</span> Radio Stations
+        </a></li>
+        <li><a href="#" routerLink="/podcasts" routerLinkActive="active" class="nav-link">
+            <span>🎧</span> Podcasts
+        </a></li>
+        <li><a href="#" routerLink="/tvshows" routerLinkActive="active" class="nav-link">
+            <span>📺</span> TV Shows
+        </a></li>
+        <li><a href="#" routerLink="/culture" routerLinkActive="active" class="nav-link">
+            <span>🎭</span> Culture
+        </a></li>
+        <li><a href="#" routerLink="/news" routerLinkActive="active" class="nav-link">
+            <span>📰</span> News
+        </a></li>
+        <li><a href="#" routerLink="/translate" routerLinkActive="active" class="nav-link">
+            <span>🌐</span> Translate
+        </a></li>
+        <li><a href="#" routerLink="/profile" routerLinkActive="active" class="nav-link">
+            <span>👤</span> Profile
+        </a></li>
+    </ul>
+    <div class="sidebar-footer">
+        <button class="btn btn--sm btn--outline" id="themeToggle">🌙 Dark Mode</button>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+    <header class="top-bar">
+        <button class="menu-btn" id="menuToggle">☰</button>
+        <div class="search-container">
+            <input type="text" id="globalSearch" placeholder="Search vocabulary, culture..." class="search-input">
+            <button class="search-btn" id="searchBtn">🔍</button>
+        </div>
+        <div class="user-info">
+            <div class="streak-display">🔥 <span id="streakDays">12</span></div>
+            <div class="xp-display">
+                <span class="xp-text">XP: <span id="userXP">450</span></span>
+                <div class="level-badge" id="userLevel">Intermediate</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Router outlet for dynamic content -->
+    <router-outlet></router-outlet>
+</main>

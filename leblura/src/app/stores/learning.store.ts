@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { APIService } from '../services/api.service';
-import { CultureData, GrammarContent, LearningChannel, TranslationService } from '../interfaces/LearningData';
+import { CultureData, CultureTopic, GrammarContent, LearningChannel, TranslationService } from '../interfaces/LearningData';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +62,7 @@ export class LearningStore {
 
   loadCultureData(): Observable<CultureData> {
     this.loadingSubject.next(true);
-    
+
     return this.apiService.getCultureData().pipe(
       tap((data: CultureData) => {
         this.cultureDataSubject.next(data);
@@ -79,7 +79,7 @@ export class LearningStore {
 
   loadGrammarContent(): Observable<GrammarContent> {
     this.loadingSubject.next(true);
-    
+
     return this.apiService.getGrammarTopics().pipe(
       tap((data: GrammarContent) => {
         this.grammarContentSubject.next(data);
@@ -110,7 +110,7 @@ export class LearningStore {
     return new Observable(observer => {
       this.cultureData$.subscribe(data => {
         const filtered: CultureData = {};
-        
+
         Object.entries(data).forEach(([key, arr]) => {
           if (Array.isArray(arr)) {
             // Filter items in the array that match the search term in any relevant property
@@ -120,13 +120,13 @@ export class LearningStore {
                 (item.title_arabic && item.title_arabic.includes(searchTerm)) ||
                 (item.description && item.description.toLowerCase().includes(searchTerm.toLowerCase()))
               );
-            });
+            }) as CultureTopic[];
             if (matches.length > 0) {
               filtered[key] = matches;
             }
           }
         });
-        
+
         observer.next(filtered);
       });
     });
@@ -136,7 +136,7 @@ export class LearningStore {
     return new Observable(observer => {
       this.grammarContent$.subscribe(data => {
         const filtered: GrammarContent = {};
-        
+
         Object.entries(data).forEach(([key, rule]) => {
           if (rule.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
               rule.title_arabic.includes(searchTerm) ||
@@ -144,7 +144,7 @@ export class LearningStore {
             filtered[key] = rule;
           }
         });
-        
+
         observer.next(filtered);
       });
     });

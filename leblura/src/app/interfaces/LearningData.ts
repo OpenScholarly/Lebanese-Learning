@@ -72,7 +72,7 @@ export interface CultureTopic {
 }
 
 export interface CultureData {
-  [key: string]: CultureTopic;
+  [key: string]: CultureTopic[];
 }
 
 export interface GrammarRule {

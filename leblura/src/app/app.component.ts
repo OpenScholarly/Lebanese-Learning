@@ -30,6 +30,9 @@ export class AppComponent {
   ngOnInit(): void {
     const publicRoutes = ['/landing', '/login', '/register'];
 
+    // Initialize app data stores
+    this.appStore.initializeApp();
+
     this.apiService.getUserData().pipe(finalize(() => { this.isLoading = false; })).subscribe({
       next: (user: User | null) => {
         if (user) {

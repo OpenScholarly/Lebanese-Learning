@@ -1,0 +1,110 @@
+{
+  "personal_pronouns": [
+    {
+      "arabic": "أنا",
+      "pronunciation": "ana",
+      "english": "I",
+      "french": "je"
+    },
+    {
+      "arabic": "انت",
+      "pronunciation": "inta",
+      "english": "you (m)",
+      "french": "tu (m)"
+    },
+    {
+      "arabic": "انتِ",
+      "pronunciation": "inte",
+      "english": "you (f)",
+      "french": "tu (f)"
+    },
+    {
+      "arabic": "هو",
+      "pronunciation": "huwwe",
+      "english": "he",
+      "french": "il"
+    },
+    {
+      "arabic": "هي",
+      "pronunciation": "hiyye",
+      "english": "she",
+      "french": "elle"
+    },
+    {
+      "arabic": "نحنا",
+      "pronunciation": "nehna",
+      "english": "we",
+      "french": "nous"
+    },
+    {
+      "arabic": "انتو",
+      "pronunciation": "into",
+      "english": "you (plural)",
+      "french": "vous"
+    },
+    {
+      "arabic": "هني",
+      "pronunciation": "hinne",
+      "english": "they",
+      "french": "ils/elles"
+    }
+  ],
+  "demonstratives": [
+    {
+      "arabic": "هيدا",
+      "pronunciation": "hayda",
+      "english": "this (m)",
+      "french": "celui-ci"
+    },
+    {
+      "arabic": "هيدي",
+      "pronunciation": "hayde",
+      "english": "this (f)",
+      "french": "celle-ci"
+    },
+    {
+      "arabic": "هودي",
+      "pronunciation": "hawde",
+      "english": "these",
+      "french": "ceux-ci"
+    },
+    {
+      "arabic": "هيديك",
+      "pronunciation": "haydeek",
+      "english": "that (f)",
+      "french": "celle-là"
+    },
+    {
+      "arabic": "هيدك",
+      "pronunciation": "haydek",
+      "english": "that (m)",
+      "french": "celui-là"
+    }
+  ],
+  "verb_to_go": [
+    {
+      "arabic": "أنا رايحة",
+      "pronunciation": "ana ray7a",
+      "english": "I am going (f)",
+      "french": "je vais"
+    },
+    {
+      "arabic": "انت رايح",
+      "pronunciation": "inta rayi7",
+      "english": "you are going (m)",
+      "french": "tu vas"
+    },
+    {
+      "arabic": "هو راح",
+      "pronunciation": "huwwe ra7",
+      "english": "he went",
+      "french": "il est allé"
+    },
+    {
+      "arabic": "رح نروح",
+      "pronunciation": "ra7 nrou7",
+      "english": "we will go",
+      "french": "nous irons"
+    }
+  ]
+}

@@ -5,9 +5,9 @@
 
     <div class="translation-container">
       <div class="translation-modes">
-        <button class="mode-btn active" data-mode="text">Text Translation</button>
-        <button class="mode-btn" data-mode="conversation">Conversation Mode</button>
-        <button class="mode-btn" data-mode="camera">Photo Translation</button>
+        <button class="mode-btn" [attr.data-mode]="mode.name" [class.active]="mode.name === activeMode" (click)="changeMode(mode.name)" *ngFor="let mode of translationModes">
+          {{ mode.fullName }}
+        </button>
       </div>
 
       <div class="translation-inputs">
@@ -31,9 +31,9 @@
             <div id="arabicOutput" class="arabic-output">Translation will appear here...</div>
             <div id="pronunciationOutput" class="pronunciation-output"></div>
             <div class="translation-controls">
-              <button class="btn btn--sm audio-btn" id="playTranslation" style="">🔊 Play</button>
-              <button class="btn btn--sm btn--outline" id="saveTranslation" style="">💾 Save</button>
-              <button class="btn btn--sm btn--outline" id="shareTranslation" style="">📤 Share</button>
+              <button class="btn btn--sm audio-btn" id="playTranslation">🔊 Play</button>
+              <button class="btn btn--sm btn--outline" id="saveTranslation">💾 Save</button>
+              <button class="btn btn--sm btn--outline" id="shareTranslation">📤 Share</button>
             </div>
           </div>
         </div>
@@ -48,13 +48,15 @@
     <div class="common-phrases">
       <h3>Common Lebanese Phrases</h3>
       <div class="phrase-categories">
-        <button class="phrase-tab active" data-category="daily">Daily Life</button>
-        <button class="phrase-tab" data-category="travel">Travel</button>
-        <button class="phrase-tab" data-category="dining">Dining</button>
-        <button class="phrase-tab" data-category="emergency">Emergency</button>
+        <button class="phrase-tab" [attr.data-category]="category.name" *ngFor="let category of phrasesCategories"
+            (click)="changeCategory(category.name)" [class.active]="category.name === activeCategory">
+          {{ category.name }}
+        </button>
       </div>
       <div class="phrase-grid" id="phraseGrid">
-        <!-- Phrases will be populated -->
+        <p *ngFor="let phrase of activePhrases"
+            class="phrase" (click)="selectPhrase(phrase)">
+          {{ phrase.text }} <span class="phrase-pronunciation">({{ phrase.pronunciation }})</span>
       </div>
     </div>
 

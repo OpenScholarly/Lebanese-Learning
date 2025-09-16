@@ -99,8 +99,8 @@
     <div class="achievements-section" *ngIf="currentUser && !loading && getRecentAchievements().length > 0">
       <h3>Recent Achievements</h3>
       <div class="achievements-list">
-        <div 
-          *ngFor="let achievement of getRecentAchievements()" 
+        <div
+          *ngFor="let achievement of getRecentAchievements()"
           class="achievement-item">
           <div class="achievement-icon">🏆</div>
           <div class="achievement-content">
@@ -119,13 +119,13 @@
           <h3>🎯 Today's Challenge</h3>
           <p>Master Lebanese vocabulary and immerse yourself in the culture!</p>
           <div class="challenge-options">
-            <button class="btn btn--primary" data-section="vocabulary">
+            <button class="btn btn--primary" data-section="vocabulary" routerLink="/vocabulary">
               📚 Practice Vocabulary
             </button>
-            <button class="btn btn--outline" data-section="radio">
+            <button class="btn btn--outline" data-section="radio" routerLink="/radio">
               📻 Listen to Radio
             </button>
-            <button class="btn btn--outline" data-section="culture">
+            <button class="btn btn--outline" data-section="culture" routerLink="/culture">
               🎭 Explore Culture
             </button>
           </div>

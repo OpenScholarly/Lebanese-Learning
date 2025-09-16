@@ -132,8 +132,8 @@ async function loadEnhancedData() {
     
     // Create comprehensive vocabulary array
     if (Object.keys(appData.vocabularyCategories).length > 0) {
-      allVocabulary = Object.values(appData.vocabularyCategories).flatMap(cat => 
-        cat.words.map(word => ({...word, category: cat.name, categoryKey: Object.keys(appData.vocabularyCategories).find(k => appData.vocabularyCategories[k] === cat)}))
+      allVocabulary = Object.entries(appData.vocabularyCategories).flatMap(([categoryKey, cat]) =>
+        cat.words.map(word => ({...word, category: cat.name, categoryKey}))
       );
       currentUser.totalWords = allVocabulary.length;
     }

@@ -5,7 +5,7 @@
 /coverage/
 /e2e/test-output/
 **/.angular/**
-.angular/**
+.angular/
 
 # Node modules and dependency files
 **/node_modules/**

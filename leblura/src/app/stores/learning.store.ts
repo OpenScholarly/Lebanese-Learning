@@ -44,7 +44,11 @@ export class LearningStore {
       this.mockCultureData = await cultureResponse.json();
       this.mockGrammarContent = await grammarResponse.json();
       this.mockLearningChannels = await channelsResponse.json();
-      this.mockTranslationServices = await translationResponse.json();
+      const translationJson = await translationResponse.json();
+      this.mockTranslationServices = [
+        ...(Array.isArray(translationJson.apis) ? translationJson.apis : []),
+        ...(Array.isArray(translationJson.tts_services) ? translationJson.tts_services : [])
+      ];
 
       // Load mock data initially
       this.cultureDataSubject.next(this.mockCultureData);

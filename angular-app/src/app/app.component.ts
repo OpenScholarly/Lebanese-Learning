@@ -22,6 +22,73 @@ interface VocabularyCategory {
   words: VocabularyWord[];
 }
 
+interface RadioStation {
+  name: string;
+  name_arabic: string;
+  frequency: string;
+  website?: string;
+  genre: string;
+  description: string;
+  established?: number;
+  special_programs?: string[];
+}
+
+interface Podcast {
+  name: string;
+  host?: string;
+  rating?: number;
+  language: string;
+  level: string;
+  format: string;
+  description: string;
+  platforms: string[];
+  since?: string;
+}
+
+interface TVShow {
+  name: string;
+  name_arabic?: string;
+  genre: string;
+  year?: number;
+  description: string;
+  learning_focus?: string[];
+  difficulty_level?: string;
+  episodes?: number;
+}
+
+interface CulturalTradition {
+  name: string;
+  name_arabic: string;
+  description: string;
+  origin?: string;
+  occasions?: string[];
+  elements?: string[];
+  customs?: string[];
+}
+
+interface NewsChannel {
+  name: string;
+  name_arabic: string;
+  website: string;
+  description: string;
+  type: string;
+  language: string;
+  focus?: string[];
+}
+
+interface GrammarTopic {
+  topic: string;
+  topic_arabic: string;
+  difficulty: string;
+  description: string;
+  examples: Array<{
+    english: string;
+    arabic: string;
+    pronunciation: string;
+    usage_note?: string;
+  }>;
+}
+
 interface UserProfile {
   xp: number;
   level: string;
@@ -105,10 +172,40 @@ export class AppComponent implements OnInit {
   currentCardIndex = 0;
   totalCards = 0;
   
+  // Radio stations data
+  radioStations: RadioStation[] = [];
+  
+  // Podcasts data
+  podcasts: Podcast[] = [];
+  
+  // TV Shows data
+  tvShows: TVShow[] = [];
+  
+  // Culture data
+  culturalTraditions: CulturalTradition[] = [];
+  
+  // News channels data
+  newsChannels: NewsChannel[] = [];
+  
+  // Grammar data
+  grammarTopics: GrammarTopic[] = [];
+  selectedGrammarTopic: GrammarTopic | null = null;
+  
+  // Translation data
+  translationInput = '';
+  translationOutput = '';
+  translationDirection = 'en-ar'; // en-ar or ar-en
+  
   constructor(private http: HttpClient) {}
   
   ngOnInit() {
     this.loadVocabularyData();
+    this.loadRadioStations();
+    this.loadPodcasts();
+    this.loadTVShows();
+    this.loadCultureData();
+    this.loadNewsChannels();
+    this.loadGrammarTopics();
     this.initializeApp();
   }
   
@@ -181,6 +278,81 @@ export class AppComponent implements OnInit {
       }
     ];
     this.selectCategory('greetings_basic');
+  }
+  
+  // Load radio stations data
+  async loadRadioStations() {
+    try {
+      const response = await this.http.get<RadioStation[]>('/assets/lebanese_radio_stations.json').toPromise();
+      if (response) {
+        this.radioStations = response;
+      }
+    } catch (error) {
+      console.error('Error loading radio stations:', error);
+    }
+  }
+  
+  // Load podcasts data
+  async loadPodcasts() {
+    try {
+      const response = await this.http.get<Podcast[]>('/assets/lebanese_podcasts.json').toPromise();
+      if (response) {
+        this.podcasts = response;
+      }
+    } catch (error) {
+      console.error('Error loading podcasts:', error);
+    }
+  }
+  
+  // Load TV shows data
+  async loadTVShows() {
+    try {
+      const response = await this.http.get<TVShow[]>('/assets/lebanese_tv_shows.json').toPromise();
+      if (response) {
+        this.tvShows = response;
+      }
+    } catch (error) {
+      console.error('Error loading TV shows:', error);
+    }
+  }
+  
+  // Load culture data
+  async loadCultureData() {
+    try {
+      const response = await this.http.get<{traditions: CulturalTradition[]}>('/assets/lebanese_culture.json').toPromise();
+      if (response && response.traditions) {
+        this.culturalTraditions = response.traditions;
+      }
+    } catch (error) {
+      console.error('Error loading culture data:', error);
+    }
+  }
+  
+  // Load news channels data
+  async loadNewsChannels() {
+    try {
+      const response = await this.http.get<NewsChannel[]>('/assets/expanded_news_channels.json').toPromise();
+      if (response) {
+        this.newsChannels = response;
+      }
+    } catch (error) {
+      console.error('Error loading news channels:', error);
+    }
+  }
+  
+  // Load grammar topics data
+  async loadGrammarTopics() {
+    try {
+      const response = await this.http.get<{grammar_topics: GrammarTopic[]}>('/assets/grammar_content.json').toPromise();
+      if (response && response.grammar_topics) {
+        this.grammarTopics = response.grammar_topics;
+        if (this.grammarTopics.length > 0) {
+          this.selectedGrammarTopic = this.grammarTopics[0];
+        }
+      }
+    } catch (error) {
+      console.error('Error loading grammar topics:', error);
+    }
   }
   
   // UI Methods
@@ -333,5 +505,32 @@ export class AppComponent implements OnInit {
       selectedCategory: this.selectedCategory
     };
     localStorage.setItem('lebaneseLearningPrefs', JSON.stringify(prefs));
+  }
+  
+  // Grammar methods
+  selectGrammarTopic(topic: GrammarTopic) {
+    this.selectedGrammarTopic = topic;
+  }
+  
+  // Translation methods
+  translateText() {
+    // Simple placeholder translation - in a real app you'd use a translation API
+    if (this.translationInput.trim()) {
+      if (this.translationDirection === 'en-ar') {
+        this.translationOutput = 'Arabic translation: ' + this.translationInput;
+      } else {
+        this.translationOutput = 'English translation: ' + this.translationInput;
+      }
+    }
+  }
+  
+  swapTranslationDirection() {
+    this.translationDirection = this.translationDirection === 'en-ar' ? 'ar-en' : 'en-ar';
+    this.translationInput = '';
+    this.translationOutput = '';
+  }
+  
+  playTranslationAudio(text: string) {
+    this.speakText(text);
   }
 }

@@ -2,100 +2,132 @@
   <div class="container">
     <div class="welcome-header">
       <h1>أهلاً وسهلاً! Welcome to Enhanced Lebanese Arabic!</h1>
-      <p>Master Lebanese Arabic with 130+ vocabulary words, cultural immersion, and authentic media</p>
+      <p>Master Lebanese Arabic with authentic vocabulary, cultural immersion, and media content</p>
     </div>
 
-    <div class="quick-stats">
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <p>Loading dashboard data...</p>
+    </div>
+
+    <!-- User Progress Section -->
+    <div class="user-progress" *ngIf="currentUser && !loading">
+      <div class="progress-card">
+        <h3>Your Learning Journey</h3>
+        <div class="progress-stats">
+          <div class="progress-item">
+            <div class="progress-label">Overall Progress</div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getLearningProgress()"></div>
+            </div>
+            <span>{{ currentUser.stats.wordsLearned }} / {{ totalVocabularyWords }} words</span>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">Daily Goal</div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getDailyGoalProgress()"></div>
+            </div>
+            <span>Progress towards {{ currentUser.stats.dailyGoal }} words today</span>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">Level {{ currentUser.level }} Progress</div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getNextLevelProgress()"></div>
+            </div>
+            <span>{{ currentUser.xp }} XP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="quick-stats" *ngIf="!loading">
       <div class="stat-card">
         <div class="stat-icon">📚</div>
         <div class="stat-content">
-          <div class="stat-number" id="totalVocabWords">130+</div>
+          <div class="stat-number">{{ totalVocabularyWords }}</div>
           <div class="stat-label">Vocabulary Words</div>
+          <div class="stat-sub">{{ vocabularyCategories }} categories</div>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">📻</div>
         <div class="stat-content">
-          <div class="stat-number">8</div>
+          <div class="stat-number">{{ totalRadioStations }}</div>
           <div class="stat-label">Radio Stations</div>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">🎧</div>
         <div class="stat-content">
-          <div class="stat-number">6</div>
+          <div class="stat-number">{{ totalPodcasts }}</div>
           <div class="stat-label">Podcasts</div>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">🎭</div>
         <div class="stat-content">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Cultural Traditions</div>
+          <div class="stat-number">{{ totalCultureTopics }}</div>
+          <div class="stat-label">Cultural Topics</div>
         </div>
       </div>
     </div>
 
-    <div class="featured-content">
+    <!-- User Stats -->
+    <div class="user-stats" *ngIf="currentUser && !loading">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">{{ currentUser.stats.streakDays }}</div>
+          <div class="stat-label">🔥 Day Streak</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ currentUser.stats.masteredWords }}</div>
+          <div class="stat-label">✅ Mastered Words</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ getStudyTimeHours() }}</div>
+          <div class="stat-label">⏱️ Study Hours</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ getMasteryProgress() }}%</div>
+          <div class="stat-label">📈 Mastery Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Achievements -->
+    <div class="achievements-section" *ngIf="currentUser && !loading && getRecentAchievements().length > 0">
+      <h3>Recent Achievements</h3>
+      <div class="achievements-list">
+        <div 
+          *ngFor="let achievement of getRecentAchievements()" 
+          class="achievement-item">
+          <div class="achievement-icon">🏆</div>
+          <div class="achievement-content">
+            <div class="achievement-name">{{ achievement.name }}</div>
+            <div class="achievement-description">{{ achievement.description }}</div>
+            <div class="achievement-date">{{ achievement.dateEarned | date:'short' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Content -->
+    <div class="featured-content" *ngIf="!loading">
       <div class="card featured-card">
         <div class="card__body">
           <h3>🎯 Today's Challenge</h3>
-          <p>Master 5 Lebanese slang expressions!</p>
-          <div class="challenge-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 60%"></div>
-            </div>
-            <span>3 / 5 completed</span>
-          </div>
-          <button class="btn btn--primary" data-section="vocabulary" data-category="lebanese_slang">Start
-            Challenge</button>
-        </div>
-      </div>
-
-      <div class="card featured-card">
-        <div class="card__body">
-          <h3>📻 Featured Radio</h3>
-          <p>Radio Delta Lebanon playing Lebanese classics</p>
-          <div class="radio-preview">
-            <div class="radio-info">
-              <strong>راديو دلتا لبنان</strong>
-              <span>Arabic Pop & Lebanese Music</span>
-            </div>
-          </div>
-          <button class="btn btn--secondary" data-section="radio">Listen Live</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="learning-path">
-      <h3>📍 Your Learning Path</h3>
-      <div class="path-steps">
-        <div class="path-step completed">
-          <div class="step-icon">✅</div>
-          <div class="step-content">
-            <h4>Basic Greetings</h4>
-            <p>18/18 mastered</p>
-          </div>
-        </div>
-        <div class="path-step current">
-          <div class="step-icon">🎯</div>
-          <div class="step-content">
-            <h4>Lebanese Slang</h4>
-            <p>12/20 mastered</p>
-          </div>
-        </div>
-        <div class="path-step upcoming">
-          <div class="step-icon">📝</div>
-          <div class="step-content">
-            <h4>Grammar Basics</h4>
-            <p>Not started</p>
-          </div>
-        </div>
-        <div class="path-step upcoming">
-          <div class="step-icon">🎭</div>
-          <div class="step-content">
-            <h4>Cultural Immersion</h4>
-            <p>Locked</p>
+          <p>Master Lebanese vocabulary and immerse yourself in the culture!</p>
+          <div class="challenge-options">
+            <button class="btn btn--primary" data-section="vocabulary">
+              📚 Practice Vocabulary
+            </button>
+            <button class="btn btn--outline" data-section="radio">
+              📻 Listen to Radio
+            </button>
+            <button class="btn btn--outline" data-section="culture">
+              🎭 Explore Culture
+            </button>
           </div>
         </div>
       </div>

@@ -4,27 +4,94 @@
     <p>Immerse yourself in Lebanese culture with authentic radio content</p>
 
     <div class="radio-controls">
-      <div class="genre-filter">
-        <button class="filter-btn active" data-genre="all">All Genres</button>
-        <button class="filter-btn" data-genre="arabic">Arabic Music</button>
-        <button class="filter-btn" data-genre="news">News & Talk</button>
-        <button class="filter-btn" data-genre="pop">International Pop</button>
+      <div class="search-filter">
+        <input 
+          type="text" 
+          placeholder="Search radio stations..." 
+          class="form-control"
+          [value]="searchTerm"
+          (input)="onSearch($event)">
+        <select 
+          class="form-control"
+          [value]="selectedGenre"
+          (change)="onGenreChange($event)">
+          <option value="all">All Genres</option>
+          <option *ngFor="let genre of getUniqueGenres()" [value]="genre">{{ genre }}</option>
+        </select>
       </div>
     </div>
 
-    <div class="radio-stations" id="radioStations">
-      <!-- Radio stations will be populated -->
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <p>Loading radio stations...</p>
     </div>
 
-    <div class="listening-practice">
+    <!-- Error State -->
+    <div *ngIf="error" class="error-state">
+      <p>{{ error }}</p>
+    </div>
+
+    <!-- Radio Stations -->
+    <div class="radio-stations" *ngIf="!loading">
+      <div class="stations-grid">
+        <div 
+          *ngFor="let station of filteredStations" 
+          class="station-card">
+          <div class="station-header">
+            <h3>{{ station.name }}</h3>
+            <p class="arabic-name">{{ station.name_arabic }}</p>
+          </div>
+          <div class="station-info">
+            <div class="frequency">📻 {{ station.frequency }}</div>
+            <div class="genre">🎵 {{ station.genre }}</div>
+            <div *ngIf="station.established" class="established">📅 Since {{ station.established }}</div>
+          </div>
+          <div class="station-description">
+            <p>{{ station.description }}</p>
+          </div>
+          <div *ngIf="station.special_programs" class="special-programs">
+            <h4>Special Programs:</h4>
+            <ul>
+              <li *ngFor="let program of station.special_programs">{{ program }}</li>
+            </ul>
+          </div>
+          <div class="station-actions">
+            <button 
+              *ngIf="station.website" 
+              class="btn btn--primary" 
+              (click)="openStationWebsite(station)">
+              🌐 Visit Website
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Listening Practice -->
+    <div class="listening-practice" *ngIf="!loading && filteredStations.length > 0">
       <div class="card">
         <div class="card__body">
           <h3>🎯 Radio Listening Challenge</h3>
-          <p>Listen to Lebanese radio and identify these key phrases:</p>
-          <div class="practice-phrases" id="radioPractice">
-            <!-- Practice phrases will be populated -->
+          <p>Listen to Lebanese radio and practice identifying these common phrases and expressions:</p>
+          <div class="practice-tips">
+            <h4>Listening Tips:</h4>
+            <ul>
+              <li>Start with music stations to hear natural Lebanese pronunciation</li>
+              <li>Listen for common greetings and expressions</li>
+              <li>Pay attention to the rhythm and intonation of Lebanese Arabic</li>
+              <li>Notice how Lebanese differs from other Arabic dialects</li>
+            </ul>
           </div>
-          <button class="btn btn--primary" id="startRadioChallenge">Start Challenge</button>
+          <div class="radio-stats">
+            <div class="stat">
+              <div class="stat-number">{{ filteredStations.length }}</div>
+              <div class="stat-label">Stations Available</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ getUniqueGenres().length }}</div>
+              <div class="stat-label">Different Genres</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -107,11 +107,19 @@ export class LearningStore {
       this.cultureData$.subscribe(data => {
         const filtered: CultureData = {};
         
-        Object.entries(data).forEach(([key, topic]) => {
-          if (topic.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              topic.title_arabic.includes(searchTerm) ||
-              topic.description.toLowerCase().includes(searchTerm.toLowerCase())) {
-            filtered[key] = topic;
+        Object.entries(data).forEach(([key, arr]) => {
+          if (Array.isArray(arr)) {
+            // Filter items in the array that match the search term in any relevant property
+            const matches = arr.filter((item: any) => {
+              return (
+                (item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (item.title_arabic && item.title_arabic.includes(searchTerm)) ||
+                (item.description && item.description.toLowerCase().includes(searchTerm.toLowerCase()))
+              );
+            });
+            if (matches.length > 0) {
+              filtered[key] = matches;
+            }
           }
         });
         

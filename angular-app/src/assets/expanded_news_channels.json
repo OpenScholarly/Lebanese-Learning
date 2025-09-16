@@ -1,0 +1,70 @@
+[
+  {
+    "name": "MTV Lebanon",
+    "name_arabic": "قناة أم تي في",
+    "type": "tv_channel",
+    "website": "https://www.mtv.com.lb",
+    "live_stream": "https://www.mtv.com.lb/live",
+    "youtube": "https://www.youtube.com/channel/UCnkTo_wMqGtLiA4xX7roORg",
+    "youtube_news": "https://www.youtube.com/channel/UC9_XmAwE5szLHF76FjMylaw",
+    "description": "Leading Lebanese entertainment and news channel",
+    "programs": [
+      "Beirut Al Yawm",
+      "MTV Al Yawm",
+      "Al Jadeed News"
+    ]
+  },
+  {
+    "name": "Al Jadeed",
+    "name_arabic": "قناة الجديد",
+    "type": "tv_channel",
+    "website": "https://www.aljadeed.tv",
+    "live_stream": "https://www.aljadeed.tv/live",
+    "youtube": "https://www.youtube.com/@ALJadeedNewslb",
+    "description": "Independent Lebanese news and current affairs channel",
+    "programs": [
+      "Al Jadeed News",
+      "Fashet Khal2",
+      "Ahmar Bel Khat Al 3areed"
+    ]
+  },
+  {
+    "name": "Al Manar",
+    "name_arabic": "قناة المنار",
+    "type": "tv_channel",
+    "website": "https://www.almanar.com.lb",
+    "youtube": "https://www.youtube.com/user/almanartv",
+    "description": "Lebanese news and political channel",
+    "programs": [
+      "Al Manar News",
+      "Hiwar Maftuh",
+      "Al Manar Fi Osbu3"
+    ]
+  },
+  {
+    "name": "LBC Lebanon",
+    "name_arabic": "الـ إل بي سي",
+    "type": "tv_channel",
+    "website": "https://www.lbcgroup.tv",
+    "youtube": "https://www.youtube.com/user/LBCLebanon",
+    "description": "Popular Lebanese entertainment and news channel",
+    "programs": [
+      "Nharkom Sa3eed",
+      "Kalam Ennas",
+      "Ahla Jalse"
+    ]
+  },
+  {
+    "name": "Future TV",
+    "name_arabic": "تلفزيون المستقبل",
+    "type": "tv_channel",
+    "website": "https://www.futuretvnetwork.com",
+    "youtube": "https://www.youtube.com/user/FutureTVNetwork",
+    "description": "Lebanese news and entertainment network",
+    "programs": [
+      "Future News",
+      "Fi Al Midan",
+      "Kalam Siyasi"
+    ]
+  }
+]

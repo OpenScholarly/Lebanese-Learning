@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Learn Levantine Arabic with Livi",
+    "host": "Olivia Furber",
+    "rating": 4.9,
+    "language": "Levantine Arabic/English",
+    "level": "Intermediate/Advanced",
+    "format": "23 min episodes",
+    "description": "Interviews with native Arabic speakers, vocabulary building",
+    "platforms": [
+      "Apple Podcasts",
+      "Spotify"
+    ],
+    "since": "April 2020"
+  },
+  {
+    "name": "Real Arabic",
+    "language": "Levantine Arabic/English",
+    "level": "Beginner/Intermediate",
+    "format": "17 min episodes",
+    "rating": 4.7,
+    "description": "Culture, history, politics with transcripts available",
+    "platforms": [
+      "Apple Podcasts",
+      "Spotify"
+    ]
+  },
+  {
+    "name": "Learn Levantine Arabic On The Go",
+    "host": "Khaled Nassra",
+    "rating": 4.7,
+    "format": "6 min bite-size episodes",
+    "level": "Beginner/Intermediate",
+    "description": "Interactive, downloadable Arabic lessons",
+    "platforms": [
+      "Apple Podcasts",
+      "Spotify",
+      "Video"
+    ]
+  },
+  {
+    "name": "Levantine Arabic, made easier",
+    "host": "Carol Haidar (Nasma of NY)",
+    "rating": 4.8,
+    "language": "Bilingual stories",
+    "level": "Intermediate",
+    "description": "True bilingual stories covering love, travel, food, culture",
+    "achievements": "Top 10 in Netherlands, Sweden, Lebanon, Italy",
+    "platforms": [
+      "Apple Podcasts",
+      "Spotify"
+    ]
+  },
+  {
+    "name": "Simple & Easy Arabic Podcast",
+    "rating": 4.6,
+    "format": "13 min episodes",
+    "level": "All levels",
+    "description": "Stories in spoken Levantine with vocabulary and questions",
+    "platforms": [
+      "Apple Podcasts",
+      "Spotify"
+    ],
+    "since": "February 2021"
+  },
+  {
+    "name": "Real Syrian Arabic",
+    "host": "Tammam (Syrian doctor)",
+    "rating": 5.0,
+    "format": "14 min episodes",
+    "level": "All levels",
+    "description": "Syrian and Arabic language and culture",
+    "platforms": [
+      "Apple Podcasts",
+      "Spotify",
+      "YouTube"
+    ],
+    "since": "2021"
+  }
+]

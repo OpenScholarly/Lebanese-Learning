@@ -1,0 +1,62 @@
+{
+  "youtube_channels": [
+    {
+      "name": "Lebanese Arabic with Hiba",
+      "channel": "https://www.youtube.com/@lebanesearabicwithhiba",
+      "description": "Learn Arabic Lebanese through practical everyday sentences and phrases",
+      "focus": "practical_phrases"
+    },
+    {
+      "name": "Globetrot With Arabic",
+      "channel": "https://www.youtube.com/channel/UCpovzufzZSP3kCYm16B5Hyw",
+      "description": "Lebanese Arabic lessons with Chaghig - comprehensive course",
+      "focus": "comprehensive_lessons"
+    },
+    {
+      "name": "Learn Levantine Arabic",
+      "channel": "https://www.youtube.com/channel/UCuLNZirpkm2HYxq-tTiXnOA",
+      "description": "Levantine Lebanese Spoken/Colloquial Arabic course",
+      "focus": "conversational"
+    },
+    {
+      "name": "Maha Yakoub - Learn Arabic",
+      "channel": "https://www.youtube.com/c/LearnArabicwithMaha",
+      "description": "Arabic Language Teacher with 600K+ followers",
+      "focus": "grammar_vocabulary"
+    }
+  ],
+  "instagram_accounts": [
+    {
+      "name": "Learn Lebanese",
+      "handle": "@learnlebanese",
+      "url": "https://www.instagram.com/learnlebanese/",
+      "description": "Native Lebanese tutor with 7+ years teaching experience",
+      "followers": "50K+",
+      "focus": "daily_phrases"
+    },
+    {
+      "name": "The Spoken Arabic",
+      "handle": "@thespokenarabic",
+      "url": "https://www.instagram.com/thespokenarabic/",
+      "description": "#1 Spoken Arabic Platform with 2000+ students",
+      "followers": "100K+",
+      "focus": "conversational_fluency"
+    },
+    {
+      "name": "Maha Yakoub",
+      "handle": "@mahayakoub",
+      "url": "https://www.instagram.com/mahayakoub/",
+      "description": "Arabic Language Teacher & Book Author +600K Youtube",
+      "followers": "56K+",
+      "focus": "structured_learning"
+    },
+    {
+      "name": "Cedrusk (Fadi)",
+      "handle": "@cedrusk",
+      "url": "https://www.instagram.com/cedrusk/",
+      "description": "Language, culture, and stories content creator",
+      "followers": "454K+",
+      "focus": "cultural_context"
+    }
+  ]
+}

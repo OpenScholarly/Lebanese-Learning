@@ -6,8 +6,16 @@
 
       <div class="vocabulary-controls">
         <div class="search-filter">
-          <input type="text" id="vocabularySearch" placeholder="Search vocabulary..." class="form-control">
-          <select id="difficultyFilter" class="form-control">
+          <input 
+            type="text" 
+            placeholder="Search vocabulary..." 
+            class="form-control"
+            [value]="searchTerm"
+            (input)="onSearch($event)">
+          <select 
+            class="form-control"
+            [value]="selectedDifficulty"
+            (change)="onDifficultyChange($event)">
             <option value="all">All Levels</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
@@ -17,18 +25,44 @@
       </div>
     </div>
 
-    <div class="category-overview" id="categoryOverview">
-      <!-- Categories will be populated by JavaScript -->
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <p>Loading vocabulary data...</p>
     </div>
 
-    <div class="active-learning">
+    <!-- Error State -->
+    <div *ngIf="error" class="error-state">
+      <p>{{ error }}</p>
+    </div>
+
+    <!-- Category Overview -->
+    <div class="category-overview" *ngIf="!loading">
+      <div class="category-grid">
+        <div 
+          *ngFor="let category of filteredCategories" 
+          class="category-card"
+          [class.active]="currentCategory === category"
+          (click)="selectCategory(category)">
+          <h3>{{ category.name }}</h3>
+          <p class="arabic-name">{{ category.name_arabic }}</p>
+          <div class="word-count">{{ category.words.length }} words</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Learning Section -->
+    <div class="active-learning" *ngIf="currentCategory && !loading">
       <div class="flashcard-section">
         <div class="flashcard-controls-top">
-          <div class="category-selector" id="categorySelector">
-            <!-- Category tabs will be populated -->
+          <div class="category-selector">
+            <h3>{{ currentCategory.name }}</h3>
+            <p>{{ currentCategory.name_arabic }}</p>
           </div>
           <div class="learning-mode">
-            <select id="learningMode" class="form-control">
+            <select 
+              class="form-control"
+              [value]="learningMode"
+              (change)="onLearningModeChange($event)">
               <option value="flashcard">Flashcard Mode</option>
               <option value="quiz">Quiz Mode</option>
               <option value="listening">Listening Mode</option>
@@ -36,48 +70,57 @@
           </div>
         </div>
 
-        <div class="flashcard-container" id="flashcardContainer">
-          <div class="flashcard enhanced-card" id="flashcard">
+        <!-- Progress Bar -->
+        <div class="progress-bar" *ngIf="currentCategory">
+          <div class="progress-fill" [style.width.%]="getProgressPercentage()"></div>
+          <span class="progress-text">
+            {{ currentCardIndex + 1 }} / {{ currentCategory.words.length }}
+          </span>
+        </div>
+
+        <!-- Flashcard -->
+        <div class="flashcard-container" *ngIf="currentWord">
+          <div class="flashcard enhanced-card" [class.flipped]="isCardFlipped" (click)="flipCard()">
             <div class="flashcard-front">
-              <div class="card-category" id="cardCategory">Greetings & Basic Phrases</div>
-              <div class="arabic-text" id="arabicText">أهلاً وسهلاً</div>
-              <div class="pronunciation" id="pronunciation">ahlan wa sahlan</div>
-              <div class="usage-note" id="usageNote">Formal greeting</div>
+              <div class="card-category">{{ currentCategory.name }}</div>
+              <div class="arabic-text">{{ currentWord.arabic }}</div>
+              <div class="pronunciation">{{ currentWord.pronunciation }}</div>
               <div class="card-actions">
-                <button class="btn btn--sm audio-btn" id="playAudio">🔊 Play</button>
-                <button class="btn btn--sm btn--outline" id="slowAudio">🐌 Slow</button>
+                <button class="btn btn--sm audio-btn" (click)="playAudio(false); $event.stopPropagation()">
+                  🔊 Play
+                </button>
+                <button class="btn btn--sm btn--outline" (click)="playAudio(true); $event.stopPropagation()">
+                  🐌 Slow
+                </button>
               </div>
             </div>
+            
             <div class="flashcard-back">
               <div class="translations">
-                <div class="english-translation">
-                  <strong>English:</strong> <span id="englishText">hello/welcome</span>
+                <div class="translation english">
+                  <label>English:</label>
+                  <span>{{ currentWord.english }}</span>
                 </div>
-                <div class="french-translation">
-                  <strong>Français:</strong> <span id="frenchText">bonjour/bienvenue</span>
+                <div class="translation french">
+                  <label>French:</label>
+                  <span>{{ currentWord.french }}</span>
                 </div>
-              </div>
-              <div class="example-sentence" id="exampleSentence">
-                <!-- Example usage will be shown here -->
-              </div>
-              <div class="mastery-actions">
-                <button class="btn btn--sm mastery-btn easy" id="markEasy">😊 Easy</button>
-                <button class="btn btn--sm mastery-btn medium" id="markMedium">😐 Medium</button>
-                <button class="btn btn--sm mastery-btn hard" id="markHard">😰 Hard</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flashcard-navigation">
-          <button class="btn btn--outline nav-btn" id="prevCard">← Previous</button>
-          <div class="card-info">
-            <span class="card-counter">
-              <span id="currentCard">1</span> / <span id="totalCards">130</span>
-            </span>
-            <button class="btn btn--primary" id="flipCard">Flip Card</button>
-          </div>
-          <button class="btn btn--outline nav-btn" id="nextCard">Next →</button>
+        <!-- Navigation Controls -->
+        <div class="flashcard-controls" *ngIf="currentCategory">
+          <button class="btn btn--outline" (click)="prevCard()" [disabled]="currentCategory.words.length <= 1">
+            ← Previous
+          </button>
+          <button class="btn btn--outline" (click)="flipCard()">
+            {{ isCardFlipped ? 'Show Front' : 'Show Answer' }}
+          </button>
+          <button class="btn btn--outline" (click)="nextCard()" [disabled]="currentCategory.words.length <= 1">
+            Next →
+          </button>
         </div>
       </div>
     </div>

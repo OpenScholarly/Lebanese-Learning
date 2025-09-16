@@ -34,4 +34,12 @@ export class SidebarService {
   setOpen(open: boolean) {
     this._isOpen.next(open);
   }
+
+  setClose(close: boolean) {
+    this._isOpen.next(close);
+  }
+
+  closeSidebar() {
+    this.setOpen(false);
+  }
 }

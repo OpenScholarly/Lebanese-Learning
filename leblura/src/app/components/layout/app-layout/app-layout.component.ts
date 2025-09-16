@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarService } from 'src/app/services/sidebar.service';
 
 @Component({
   selector: 'app-app-layout',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppLayoutComponent {
 
+  constructor(public sidebarService: SidebarService) { }
 }

@@ -53,6 +53,13 @@ export class MockAPIService {
     return of("Logout successful (mock)!");
   }
 
+  getUserData(): Observable<User> {
+    return of(MockData.User);
+  }
+
+
+
+
   getVocabularyCategories(): Observable<any> {
     return of(MockData.vocabularyCategories);
   }

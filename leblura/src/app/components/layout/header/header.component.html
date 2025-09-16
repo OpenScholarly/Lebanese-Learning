@@ -1,5 +1,5 @@
 <header class="top-bar">
-  <button class="menu-btn" id="menuToggle">☰</button>
+  <button class="menu-btn" id="menuToggle" (click)="sidebarService.toggle(); $event.stopPropagation()">☰</button>
   <div class="search-container">
     <input type="text" id="globalSearch" placeholder="Search vocabulary, culture..." class="search-input">
     <button class="search-btn" id="searchBtn">🔍</button>

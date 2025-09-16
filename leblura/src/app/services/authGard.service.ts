@@ -1,7 +1,5 @@
-// src/app/services/authGard.service.ts
-
 import { inject } from '@angular/core';
-import { CanActivateFn, Router, UrlTree } from '@angular/router'; // <-- Import UrlTree
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { AppStore } from '../stores/app.store';
 import { of } from 'rxjs';
 import { catchError, filter, map, take, timeout } from 'rxjs/operators';
@@ -12,9 +10,9 @@ export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
   const landingUrlTree: UrlTree = router.parseUrl('/landing');
 
-  // if (environment.mockAuth) {
-  //   return true;
-  // }
+  if (environment.mockAuth) {
+    return true;
+  }
 
   console.log("[authGard] Looking for user...");
   return appStore.currentUser.pipe(

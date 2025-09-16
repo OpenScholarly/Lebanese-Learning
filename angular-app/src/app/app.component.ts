@@ -534,8 +534,11 @@ export class AppComponent implements OnInit {
     const input = this.translationInput.trim().toLowerCase();
     if (input) {
       const mapping = this.translationMap[input];
-      if (mapping && mapping[this.translationDirection]) {
-        this.translationOutput = mapping[this.translationDirection]!;
+      if (
+        mapping &&
+        mapping[this.translationDirection as 'en-ar' | 'ar-en']
+      ) {
+        this.translationOutput = mapping[this.translationDirection as 'en-ar' | 'ar-en']!;
       } else {
         this.translationOutput = 'Translation not available for this phrase.';
       }

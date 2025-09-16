@@ -1,5 +1,5 @@
 <app-sidebar></app-sidebar>
-<main class="main-content" id="mainContent">
+<main class="main-content" id="mainContent" (click)="sidebarService.closeSidebar()">
   <app-header></app-header>
   <div class="content-area">
     <router-outlet></router-outlet>

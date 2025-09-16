@@ -515,14 +515,32 @@ export class AppComponent implements OnInit {
   }
   
   // Translation methods
+  // Basic translation mapping for demonstration purposes
+  private translationMap: { [key: string]: { 'en-ar'?: string, 'ar-en'?: string } } = {
+    'hello': { 'en-ar': 'مرحبا', 'ar-en': 'hello' },
+    'goodbye': { 'en-ar': 'وداعا', 'ar-en': 'goodbye' },
+    'thank you': { 'en-ar': 'شكرا', 'ar-en': 'thank you' },
+    'yes': { 'en-ar': 'نعم', 'ar-en': 'yes' },
+    'no': { 'en-ar': 'لا', 'ar-en': 'no' },
+    'مرحبا': { 'ar-en': 'hello', 'en-ar': 'مرحبا' },
+    'وداعا': { 'ar-en': 'goodbye', 'en-ar': 'وداعا' },
+    'شكرا': { 'ar-en': 'thank you', 'en-ar': 'شكرا' },
+    'نعم': { 'ar-en': 'yes', 'en-ar': 'نعم' },
+    'لا': { 'ar-en': 'no', 'en-ar': 'لا' }
+  };
+
   translateText() {
-    // Simple placeholder translation - in a real app you'd use a translation API
-    if (this.translationInput.trim()) {
-      if (this.translationDirection === 'en-ar') {
-        this.translationOutput = 'Arabic translation: ' + this.translationInput;
+    // Basic translation using a small mapping. In a real app, use a translation API.
+    const input = this.translationInput.trim().toLowerCase();
+    if (input) {
+      const mapping = this.translationMap[input];
+      if (mapping && mapping[this.translationDirection]) {
+        this.translationOutput = mapping[this.translationDirection]!;
       } else {
-        this.translationOutput = 'English translation: ' + this.translationInput;
+        this.translationOutput = 'Translation not available for this phrase.';
       }
+    } else {
+      this.translationOutput = '';
     }
   }
   

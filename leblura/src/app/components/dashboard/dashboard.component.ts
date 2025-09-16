@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.vocabularyStore.vocabularyData$.subscribe(data => {
         this.vocabularyCategories = Object.keys(data).length;
         this.totalVocabularyWords = Object.values(data).reduce(
-          (total, category) => total + category.words.length, 0
+          (total, category) => total + category.words?.length || 0, 0
         );
       })
     );

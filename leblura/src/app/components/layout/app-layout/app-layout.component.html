@@ -1,7 +1,7 @@
 <app-sidebar></app-sidebar>
-<main class="main-content" id="mainContent" (click)="sidebarService.closeSidebar()">
+<main class="main-content" id="mainContent">
   <app-header></app-header>
-  <div class="content-area">
+  <div class="content-area" (click)="sidebarService.close()">
     <router-outlet></router-outlet>
   </div>
 </main>

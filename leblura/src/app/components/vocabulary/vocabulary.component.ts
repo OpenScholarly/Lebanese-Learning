@@ -17,13 +17,13 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   currentCategory: VocabularyCategory | null = null;
   currentWord: VocabularyWord | null = null;
   currentUser: User | null = null;
-  
+
   searchTerm: string = '';
   selectedDifficulty: string = 'all';
   learningMode: string = 'flashcard';
   currentCardIndex: number = 0;
   isCardFlipped: boolean = false;
-  
+
   loading: boolean = false;
   error: string | null = null;
 
@@ -40,8 +40,9 @@ export class VocabularyComponent implements OnInit, OnDestroy {
       this.vocabularyStore.vocabularyData$.subscribe(data => {
         this.vocabularyData = data;
         this.vocabularyCategories = Object.values(data);
+        console.log('Loaded vocabulary categories:', this.vocabularyCategories);
         this.filteredCategories = this.vocabularyCategories;
-        
+
         if (this.vocabularyCategories.length > 0 && !this.currentCategory) {
           this.selectCategory(this.vocabularyCategories[0]);
         }
@@ -67,7 +68,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
       this.appStore.currentUser.subscribe(user => {
         this.currentUser = user || null;
         if (user && user.selectedCategory) {
-          const category = this.vocabularyCategories.find(cat => 
+          const category = this.vocabularyCategories.find(cat =>
             Object.keys(this.vocabularyData).find(key => key === user.selectedCategory)
           );
           if (category) {
@@ -100,11 +101,11 @@ export class VocabularyComponent implements OnInit, OnDestroy {
 
   nextCard() {
     if (!this.currentCategory) return;
-    
+
     this.currentCardIndex = (this.currentCardIndex + 1) % this.currentCategory.words.length;
     this.updateCurrentWord();
     this.isCardFlipped = false;
-    
+
     // Update user progress
     if (this.currentUser) {
       this.appStore.updateUser({ currentCard: this.currentCardIndex });
@@ -113,13 +114,13 @@ export class VocabularyComponent implements OnInit, OnDestroy {
 
   prevCard() {
     if (!this.currentCategory) return;
-    
-    this.currentCardIndex = this.currentCardIndex > 0 
-      ? this.currentCardIndex - 1 
-      : this.currentCategory.words.length - 1;
+
+    this.currentCardIndex = this.currentCardIndex > 0
+      ? this.currentCardIndex - 1
+      : this.currentCategory.words?.length - 1;
     this.updateCurrentWord();
     this.isCardFlipped = false;
-    
+
     // Update user progress
     if (this.currentUser) {
       this.appStore.updateUser({ currentCard: this.currentCardIndex });
@@ -167,13 +168,13 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   }
 
   getCategoryKey(category: VocabularyCategory): string {
-    return Object.keys(this.vocabularyData).find(key => 
+    return Object.keys(this.vocabularyData).find(key =>
       this.vocabularyData[key] === category
     ) || '';
   }
 
   getProgressPercentage(): number {
-    if (!this.currentCategory || this.currentCategory.words.length === 0) return 0;
+    if (!this.currentCategory || !this.currentCategory.words || this.currentCategory.words.length === 0) return 0;
     return ((this.currentCardIndex + 1) / this.currentCategory.words.length) * 100;
   }
 }

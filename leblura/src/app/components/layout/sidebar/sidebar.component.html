@@ -1,41 +1,16 @@
-<nav class="sidebar" id="sidebar" (click)="$event.stopPropagation()" [ngClass]="{'open': isSideBarOpen, 'closed': !isSideBarOpen}">
-  <div>
+<nav class="sidebar" id="sidebar" [ngClass]="{'open': isSideBarOpen, 'closed': !isSideBarOpen}">
+  <div class="sidebar-header">
     <h2>LebaneseLingo Pro</h2>
-    <button class="close-btn" id="closeSidebar" (click)="sidebarService.closeSidebar()">&times;</button>
+    <button class="close-btn" id="closeSidebar" (click)="sidebarService.close()">&times;</button>
   </div>
   <ul class="nav-menu">
-    <li><a data-section="dashboard" class="nav-link active" routerLink="/dashboard">
-        <span>🏠</span> Dashboard
-      </a></li>
-    <li><a data-section="vocabulary" class="nav-link" routerLink="/vocabulary">
-        <span>📚</span> Vocabulary (130+)
-      </a></li>
-    <li><a data-section="grammar" class="nav-link" routerLink="/grammar">
-        <span>📖</span> Grammar
-      </a></li>
-    <li><a data-section="radio" class="nav-link" routerLink="/radio">
-        <span>📻</span> Radio Stations
-      </a></li>
-    <li><a data-section="podcasts" class="nav-link" routerLink="/podcasts">
-        <span>🎧</span> Podcasts
-      </a></li>
-    <li><a data-section="tvshows" class="nav-link" routerLink="/tvshows">
-        <span>📺</span> TV Shows
-      </a></li>
-    <li><a data-section="culture" class="nav-link" routerLink="/culture">
-        <span>🎭</span> Culture
-      </a></li>
-    <li><a data-section="news" class="nav-link" routerLink="/news">
-        <span>📰</span> News
-      </a></li>
-    <li><a data-section="translate" class="nav-link" routerLink="/translate">
-        <span>🌐</span> Translate
-      </a></li>
-    <li><a data-section="profile" class="nav-link" routerLink="/profile">
-        <span>👤</span> Profile
-      </a></li>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.route" [attr.data-section]="item.section" class="nav-link">
+        <span>{{ item.icon }}</span> {{ item.name }}
+      </a>
+    </li>
   </ul>
   <div class="sidebar-footer">
-    <button class="btn btn--sm btn--outline" id="themeToggle">🌙 Dark Mode</button>
+    <button class="btn btn--sm btn--outline" id="themeToggle" (click)="toggleTheme()">🌙 Dark Mode</button>
   </div>
 </nav>

@@ -11,7 +11,7 @@
                 <h3>Lebanese Arabic Learner</h3>
                 <div class="level-badge-large" id="profileLevel">Intermediate</div>
                 <div class="xp-progress">
-                  <span>XP: <span id="profileXP">{{ user?.xp }}</span> / 1000</span>
+                  <span>XP: <span id="profileXP">{{ user.xp }}</span> / 1000</span>
                   <div class="progress-bar">
                     <div class="progress-fill" id="profileProgress" style="width: 45%"></div>
                   </div>
@@ -35,19 +35,19 @@
             <h3>Learning Analytics</h3>
             <div class="analytics-grid">
               <div class="metric">
-                <div class="metric-value" id="totalWords">{{ user?.stats?.totalWords }}</div>
+                <div class="metric-value" id="totalWords">{{ user.stats.totalWords }}</div>
                 <div class="metric-label">Total Words</div>
               </div>
               <div class="metric">
-                <div class="metric-value" id="masteredWords">{{ user?.stats?.masteredWords }}</div>
+                <div class="metric-value" id="masteredWords">{{ user.stats.masteredWords }}</div>
                 <div class="metric-label">Mastered</div>
               </div>
               <div class="metric">
-                <div class="metric-value" id="studyTime">{{ user?.stats?.studyTime }}h</div>
+                <div class="metric-value" id="studyTime">{{ user.stats.studyTime }}h</div>
                 <div class="metric-label">Study Time</div>
               </div>
               <div class="metric">
-                <div class="metric-value" id="streakCount">{{ user?.stats?.streakDays }}</div>
+                <div class="metric-value" id="streakCount">{{ user.stats.streakDays }}</div>
                 <div class="metric-label">Day Streak</div>
               </div>
             </div>

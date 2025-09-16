@@ -9,7 +9,7 @@ export class SidebarService {
   constructor() {
     window.addEventListener('resize', () => {
       if (this.isMobile()) {
-        this.setOpen(false);
+        this.open(false);
       }
     });
 
@@ -31,15 +31,11 @@ export class SidebarService {
     this._isOpen.next(!this._isOpen.value);
   }
 
-  setOpen(open: boolean) {
+  open(open: boolean) {
     this._isOpen.next(open);
   }
 
-  setClose(close: boolean) {
-    this._isOpen.next(close);
-  }
-
-  closeSidebar() {
-    this.setOpen(false);
+  close() {
+    this.open(false);
   }
 }

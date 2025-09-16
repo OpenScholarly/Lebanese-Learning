@@ -150,7 +150,18 @@ async function loadEnhancedData() {
     
     // If no data loaded, use fallback
     if (allVocabulary.length === 0) {
-      throw new Error('No vocabulary data loaded');
+      // Build a detailed error message
+      let failedSources = [];
+      if (!appData.vocabularyCategories || Object.keys(appData.vocabularyCategories).length === 0) {
+        failedSources.push('vocabularyCategories (./expanded_vocabulary.json)');
+      }
+      // You can add more checks for other sources if needed
+      let errorMsg = 'No vocabulary data loaded. ';
+      if (failedSources.length > 0) {
+        errorMsg += 'The following data sources failed to load or were empty: ' + failedSources.join(', ') + '. ';
+      }
+      errorMsg += 'Please check that the required JSON files exist, are accessible, and contain valid data.';
+      throw new Error(errorMsg);
     }
     
   } catch (error) {

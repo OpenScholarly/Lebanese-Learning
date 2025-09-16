@@ -343,9 +343,11 @@ export class AppComponent implements OnInit {
   // Load grammar topics data
   async loadGrammarTopics() {
     try {
-      const response = await this.http.get<{grammar_topics: GrammarTopic[]}>('/assets/grammar_content.json').toPromise();
-      if (response && response.grammar_topics) {
-        this.grammarTopics = response.grammar_topics;
+      const response = await this.http.get<any>('/assets/grammar_content.json').toPromise();
+      if (response && typeof response === 'object') {
+        this.grammarTopics = Object.keys(response).map(key => {
+          return { name: key, ...response[key] };
+        });
         if (this.grammarTopics.length > 0) {
           this.selectedGrammarTopic = this.grammarTopics[0];
         }

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Radio Delta Lebanon",
+    "name_arabic": "راديو دلتا لبنان",
+    "frequency": "Various FM",
+    "website": "https://radiodelta.fm/",
+    "genre": "Arabic Pop, Lebanese Music",
+    "description": "Among the top Arabic radio stations in Lebanon",
+    "established": 1982,
+    "special_programs": [
+      "Top 10 Chart Show",
+      "Phonograph (Lebanese Oldies)",
+      "Al Jundi Program"
+    ]
+  },
+  {
+    "name": "Virgin Radio Lebanon",
+    "name_arabic": "فيرجين راديو لبنان",
+    "frequency": "89.5 FM",
+    "genre": "Pop, Rock, International Hits",
+    "description": "International music station with Lebanese presence"
+  },
+  {
+    "name": "Voice of Lebanon",
+    "name_arabic": "صوت لبنان",
+    "frequency": "93.3 FM",
+    "genre": "News, Arabic Music",
+    "description": "Traditional Lebanese radio with news and cultural programming"
+  },
+  {
+    "name": "Mix FM Lebanon",
+    "name_arabic": "ميكس أف أم",
+    "frequency": "Various",
+    "genre": "Contemporary Hits, Pop",
+    "description": "Popular music station focusing on contemporary hits"
+  },
+  {
+    "name": "Sawt El Ghad",
+    "name_arabic": "صوت الغد",
+    "genre": "Arabic & International Music",
+    "description": "Mix of Arabic and international music programming"
+  },
+  {
+    "name": "Light FM",
+    "name_arabic": "لايت أف أم",
+    "frequency": "90.5 & 90.7 FM",
+    "genre": "Jazz, Blues, World Music",
+    "description": "Sophisticated music programming from Beirut"
+  },
+  {
+    "name": "Radio Fairouziat",
+    "name_arabic": "راديو فيروزيات",
+    "genre": "Classical Lebanese, Fairuz Music",
+    "description": "Dedicated to Lebanese classical music and Fairuz songs"
+  },
+  {
+    "name": "Aghani Aghani",
+    "name_arabic": "أغاني أغاني",
+    "genre": "Arabic Pop, Lebanese Songs",
+    "description": "Popular Arabic music and Lebanese hits"
+  }
+]

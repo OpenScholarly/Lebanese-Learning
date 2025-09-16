@@ -1,63 +1,328 @@
 <!-- Navigation Sidebar -->
-<nav class="sidebar" id="sidebar">
+<nav class="sidebar" [class.active]="sidebarOpen" id="sidebar">
     <div class="sidebar-header">
         <h2>LebaneseLingo Pro</h2>
-        <button class="close-btn" id="closeSidebar">&times;</button>
+        <button class="close-btn" (click)="closeSidebar()">&times;</button>
     </div>
     <ul class="nav-menu">
-        <li><a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('dashboard')" [class.active]="activeSection === 'dashboard'" class="nav-link">
             <span>🏠</span> Dashboard
         </a></li>
-        <li><a routerLink="/vocabulary" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('vocabulary')" [class.active]="activeSection === 'vocabulary'" class="nav-link">
             <span>📚</span> Vocabulary (130+)
         </a></li>
-        <li><a routerLink="/grammar" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('grammar')" [class.active]="activeSection === 'grammar'" class="nav-link">
             <span>📖</span> Grammar
         </a></li>
-        <li><a routerLink="/radio" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('radio')" [class.active]="activeSection === 'radio'" class="nav-link">
             <span>📻</span> Radio Stations
         </a></li>
-        <li><a routerLink="/podcasts" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('podcasts')" [class.active]="activeSection === 'podcasts'" class="nav-link">
             <span>🎧</span> Podcasts
         </a></li>
-        <li><a routerLink="/tvshows" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('tvshows')" [class.active]="activeSection === 'tvshows'" class="nav-link">
             <span>📺</span> TV Shows
         </a></li>
-        <li><a routerLink="/culture" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('culture')" [class.active]="activeSection === 'culture'" class="nav-link">
             <span>🎭</span> Culture
         </a></li>
-        <li><a routerLink="/news" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('news')" [class.active]="activeSection === 'news'" class="nav-link">
             <span>📰</span> News
         </a></li>
-        <li><a routerLink="/translate" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('translate')" [class.active]="activeSection === 'translate'" class="nav-link">
             <span>🌐</span> Translate
         </a></li>
-        <li><a routerLink="/profile" routerLinkActive="active" class="nav-link">
+        <li><a href="#" (click)="setActiveSection('profile')" [class.active]="activeSection === 'profile'" class="nav-link">
             <span>👤</span> Profile
         </a></li>
     </ul>
     <div class="sidebar-footer">
-        <button class="btn btn--sm btn--outline" id="themeToggle">🌙 Dark Mode</button>
+        <button class="btn btn--sm btn--outline" (click)="toggleTheme()">{{darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}}</button>
     </div>
 </nav>
 
 <!-- Main Content -->
-<main class="main-content">
+<main class="main-content" (click)="closeSidebar()">
     <header class="top-bar">
-        <button class="menu-btn" id="menuToggle">☰</button>
+        <button class="menu-btn" (click)="toggleSidebar(); $event.stopPropagation()">☰</button>
         <div class="search-container">
-            <input type="text" id="globalSearch" placeholder="Search vocabulary, culture..." class="search-input">
-            <button class="search-btn" id="searchBtn">🔍</button>
+            <input type="text" [(ngModel)]="globalSearchTerm" (input)="performGlobalSearch()" placeholder="Search vocabulary, culture..." class="search-input">
+            <button class="search-btn" (click)="performGlobalSearch()">🔍</button>
         </div>
         <div class="user-info">
-            <div class="streak-display">🔥 <span id="streakDays">12</span></div>
+            <div class="streak-display">🔥 <span>{{userProfile.streakDays}}</span></div>
             <div class="xp-display">
-                <span class="xp-text">XP: <span id="userXP">450</span></span>
-                <div class="level-badge" id="userLevel">Intermediate</div>
+                <span class="xp-text">XP: <span>{{userProfile.xp}}</span></span>
+                <div class="level-badge">{{userProfile.level}}</div>
             </div>
         </div>
     </header>
 
-    <!-- Router outlet for dynamic content -->
-    <router-outlet></router-outlet>
+    <!-- Dashboard Section -->
+    <section *ngIf="activeSection === 'dashboard'" class="content-section active">
+        <div class="container">
+            <div class="welcome-header">
+                <h1>أهلاً وسهلاً! Welcome to Enhanced Lebanese Arabic!</h1>
+                <p>Master Lebanese Arabic with 130+ vocabulary words, cultural immersion, and authentic media</p>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-content">
+                        <div class="stat-number">{{stats.vocabularyWords}}+</div>
+                        <div class="stat-label">Vocabulary Words</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📻</div>
+                    <div class="stat-content">
+                        <div class="stat-number">{{stats.radioStations}}</div>
+                        <div class="stat-label">Radio Stations</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎧</div>
+                    <div class="stat-content">
+                        <div class="stat-number">{{stats.podcasts}}</div>
+                        <div class="stat-label">Podcasts</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎭</div>
+                    <div class="stat-content">
+                        <div class="stat-number">{{stats.culturalTraditions}}</div>
+                        <div class="stat-label">Cultural Traditions</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-content">
+                <div class="card featured-card">
+                    <div class="card__body">
+                        <h3>🎯 Today's Challenge</h3>
+                        <p>Master 5 Lebanese slang expressions!</p>
+                        <div class="challenge-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" [style.width.%]="challengeProgress"></div>
+                            </div>
+                            <span>{{challengeCompleted}} / {{challengeTotal}} completed</span>
+                        </div>
+                        <button class="btn btn--primary" (click)="startChallenge('vocabulary', 'lebanese_slang')">Start Challenge</button>
+                    </div>
+                </div>
+
+                <div class="card featured-card">
+                    <div class="card__body">
+                        <h3>📻 Featured Radio</h3>
+                        <p>Radio Delta Lebanon playing Lebanese classics</p>
+                        <div class="radio-preview">
+                            <div class="radio-info">
+                                <strong>راديو دلتا لبنان</strong>
+                                <span>Arabic Pop & Lebanese Music</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--secondary" (click)="setActiveSection('radio')">Listen Live</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learning-path">
+                <h3>📍 Your Learning Path</h3>
+                <div class="path-steps">
+                    <div class="path-step" [ngClass]="getPathStepClass('greetings')">
+                        <div class="step-icon">✅</div>
+                        <div class="step-content">
+                            <h4>Basic Greetings</h4>
+                            <p>{{learningPath.greetings.mastered}}/{{learningPath.greetings.total}} mastered</p>
+                        </div>
+                    </div>
+                    <div class="path-step" [ngClass]="getPathStepClass('slang')">
+                        <div class="step-icon">🎯</div>
+                        <div class="step-content">
+                            <h4>Lebanese Slang</h4>
+                            <p>{{learningPath.slang.mastered}}/{{learningPath.slang.total}} mastered</p>
+                        </div>
+                    </div>
+                    <div class="path-step" [ngClass]="getPathStepClass('grammar')">
+                        <div class="step-icon">📝</div>
+                        <div class="step-content">
+                            <h4>Grammar Basics</h4>
+                            <p>{{learningPath.grammar.status}}</p>
+                        </div>
+                    </div>
+                    <div class="path-step" [ngClass]="getPathStepClass('culture')">
+                        <div class="step-icon">🎭</div>
+                        <div class="step-content">
+                            <h4>Cultural Immersion</h4>
+                            <p>{{learningPath.culture.status}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Vocabulary Section -->
+    <section *ngIf="activeSection === 'vocabulary'" class="content-section">
+        <div class="container">
+            <div class="vocabulary-header">
+                <h1>Enhanced Vocabulary Learning</h1>
+                <p>Master 130+ authentic Lebanese Arabic words across 7 comprehensive categories</p>
+                
+                <div class="vocabulary-controls">
+                    <div class="search-filter">
+                        <input type="text" [(ngModel)]="vocabularySearchTerm" (input)="filterVocabulary()" placeholder="Search vocabulary..." class="form-control">
+                        <select [(ngModel)]="difficultyFilter" (change)="filterVocabulary()" class="form-control">
+                            <option value="all">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-overview">
+                <div *ngFor="let category of vocabularyCategories" class="category-card" [class.active]="selectedCategory === category.id" (click)="selectCategory(category.id)">
+                    <div class="category-icon">{{category.icon}}</div>
+                    <div class="category-info">
+                        <h3>{{category.name}}</h3>
+                        <p>{{category.words.length}} words</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="active-learning">
+                <div class="flashcard-section">
+                    <div class="flashcard-controls-top">
+                        <div class="category-selector">
+                            <button *ngFor="let category of vocabularyCategories" 
+                                    [class.active]="selectedCategory === category.id"
+                                    (click)="selectCategory(category.id)"
+                                    class="category-tab">
+                                {{category.name}}
+                            </button>
+                        </div>
+                        <div class="learning-mode">
+                            <select [(ngModel)]="learningMode" (change)="changeLearningMode()" class="form-control">
+                                <option value="flashcard">Flashcard Mode</option>
+                                <option value="quiz">Quiz Mode</option>
+                                <option value="listening">Listening Mode</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flashcard-container" *ngIf="currentWord">
+                        <div class="flashcard enhanced-card" [class.flipped]="cardFlipped" (click)="flipCard()">
+                            <div class="flashcard-front">
+                                <div class="card-category">{{getCurrentCategory()?.name}}</div>
+                                <div class="arabic-text">{{currentWord.arabic}}</div>
+                                <div class="pronunciation">{{currentWord.pronunciation}}</div>
+                                <div class="usage-note" *ngIf="currentWord.usage">{{currentWord.usage}}</div>
+                                <div class="card-actions">
+                                    <button class="btn btn--sm audio-btn" (click)="playAudio($event, currentWord.arabic)">🔊 Play</button>
+                                    <button class="btn btn--sm btn--outline" (click)="playSlowAudio($event, currentWord.arabic)">🐌 Slow</button>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="translations">
+                                    <div class="english-translation">
+                                        <strong>English:</strong> <span>{{currentWord.english}}</span>
+                                    </div>
+                                    <div class="french-translation" *ngIf="currentWord.french">
+                                        <strong>Français:</strong> <span>{{currentWord.french}}</span>
+                                    </div>
+                                </div>
+                                <div class="example-sentence" *ngIf="currentWord.example">
+                                    <strong>Example:</strong> {{currentWord.example}}
+                                </div>
+                                <div class="mastery-actions">
+                                    <button class="btn btn--sm mastery-btn easy" (click)="markDifficulty($event, 'easy')">😊 Easy</button>
+                                    <button class="btn btn--sm mastery-btn medium" (click)="markDifficulty($event, 'medium')">😐 Medium</button>
+                                    <button class="btn btn--sm mastery-btn hard" (click)="markDifficulty($event, 'hard')">😰 Hard</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flashcard-navigation">
+                        <button class="btn btn--outline nav-btn" (click)="previousCard()" [disabled]="currentCardIndex === 0">← Previous</button>
+                        <div class="card-info">
+                            <span class="card-counter">
+                                <span>{{currentCardIndex + 1}}</span> / <span>{{totalCards}}</span>
+                            </span>
+                            <button class="btn btn--primary" (click)="flipCard()">Flip Card</button>
+                        </div>
+                        <button class="btn btn--outline nav-btn" (click)="nextCard()" [disabled]="currentCardIndex === totalCards - 1">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other sections (simplified for now) -->
+    <section *ngIf="activeSection === 'grammar'" class="content-section">
+        <div class="container">
+            <h1>Lebanese Arabic Grammar</h1>
+            <p>Master the fundamentals of Lebanese Arabic grammar with practical examples</p>
+            <!-- Grammar content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'radio'" class="content-section">
+        <div class="container">
+            <h1>🎵 Lebanese Radio Stations</h1>
+            <p>Immerse yourself in Lebanese culture with authentic radio content</p>
+            <!-- Radio content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'podcasts'" class="content-section">
+        <div class="container">
+            <h1>🎧 Lebanese Arabic Podcasts</h1>
+            <p>Learn from expert teachers and native speakers through engaging podcast content</p>
+            <!-- Podcasts content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'tvshows'" class="content-section">
+        <div class="container">
+            <h1>📺 Lebanese TV Shows for Learning</h1>
+            <p>Practice listening comprehension with authentic Lebanese television content</p>
+            <!-- TV shows content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'culture'" class="content-section">
+        <div class="container">
+            <h1>🎭 Lebanese Culture & Traditions</h1>
+            <p>Immerse yourself in authentic Lebanese culture, traditions, and customs</p>
+            <!-- Culture content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'news'" class="content-section">
+        <div class="container">
+            <h1>📰 Lebanese News Channels</h1>
+            <p>Practice listening comprehension with real Lebanese Arabic news broadcasts</p>
+            <!-- News content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'translate'" class="content-section">
+        <div class="container">
+            <h1>🌐 Real-Time Translation</h1>
+            <p>Translate between English/French and Lebanese Arabic with pronunciation</p>
+            <!-- Translation content will be implemented -->
+        </div>
+    </section>
+
+    <section *ngIf="activeSection === 'profile'" class="content-section">
+        <div class="container">
+            <h1>👤 Profile & Analytics</h1>
+            <p>Track your learning progress and manage your settings</p>
+            <!-- Profile content will be implemented -->
+        </div>
+    </section>
 </main>

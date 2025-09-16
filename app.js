@@ -64,52 +64,79 @@ document.addEventListener('DOMContentLoaded', async function() {
   loadTranslationHistory();
 });
 
-// Load Enhanced Real Data
+// Load Enhanced Real Data from local files
 async function loadEnhancedData() {
   try {
-    console.log('📊 Loading enhanced data from assets...');
+    console.log('📊 Loading enhanced data from local assets...');
     
     // Load expanded vocabulary
-    const vocabResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/e907a215.json');
-    const vocabData = await vocabResponse.json();
-    appData.vocabularyCategories = vocabData.vocabularyCategories;
+    const vocabResponse = await fetch('./expanded_vocabulary.json');
+    if (vocabResponse.ok) {
+      const vocabData = await vocabResponse.json();
+      // The JSON file contains the categories directly, not wrapped
+      appData.vocabularyCategories = vocabData;
+    }
     
     // Load radio stations
-    const radioResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/37e4d2a3.json');
-    const radioData = await radioResponse.json();
-    appData.radioStations = radioData.radioStations;
+    const radioResponse = await fetch('./lebanese_radio_stations.json');
+    if (radioResponse.ok) {
+      const radioData = await radioResponse.json();
+      // The JSON file contains the array directly
+      appData.radioStations = radioData;
+    }
     
     // Load podcasts
-    const podcastResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/14742350.json');
-    const podcastData = await podcastResponse.json();
-    appData.podcasts = podcastData.podcasts;
+    const podcastResponse = await fetch('./lebanese_podcasts.json');
+    if (podcastResponse.ok) {
+      const podcastData = await podcastResponse.json();
+      // The JSON file contains the array directly
+      appData.podcasts = podcastData;
+    }
     
     // Load TV shows
-    const tvResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/8eaf944b.json');
-    const tvData = await tvResponse.json();
-    appData.tvShows = tvData.tvShows;
+    const tvResponse = await fetch('./lebanese_tv_shows.json');
+    if (tvResponse.ok) {
+      const tvData = await tvResponse.json();
+      // The JSON file contains the array directly
+      appData.tvShows = tvData;
+    }
     
     // Load culture content
-    const cultureResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/c571d160.json');
-    const cultureData = await cultureResponse.json();
-    appData.culture = cultureData.culture;
+    const cultureResponse = await fetch('./lebanese_culture.json');
+    if (cultureResponse.ok) {
+      const cultureData = await cultureResponse.json();
+      // The JSON file contains the culture object directly
+      appData.culture = cultureData;
+    }
     
     // Load grammar content
-    const grammarResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/6ecc363b.json');
-    const grammarData = await grammarResponse.json();
-    appData.grammarTopics = grammarData.grammarTopics;
+    const grammarResponse = await fetch('./grammar_content.json');
+    if (grammarResponse.ok) {
+      const grammarData = await grammarResponse.json();
+      // Transform the grammar data into the expected format
+      appData.grammarTopics = [
+        {id: 'pronouns', title: 'Personal Pronouns', description: 'Learn Lebanese Arabic personal pronouns', data: grammarData.personal_pronouns},
+        {id: 'verbs', title: 'Verb Conjugations', description: 'Master verb conjugations', data: grammarData.verb_conjugations || []},
+        {id: 'demonstratives', title: 'This/That/These', description: 'Demonstrative pronouns', data: grammarData.demonstratives || []},
+        {id: 'questions', title: 'Question Formation', description: 'How to ask questions', data: grammarData.question_words || []}
+      ];
+    }
     
     // Load expanded news channels
-    const newsResponse = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/82aafe9e8be831a4dff3d2c8d5e16151/dd5e8884-0dc4-424f-ac54-6ea89930f2f0/75fe5a68.json');
-    const newsData = await newsResponse.json();
-    appData.newsChannels = newsData.newsChannels;
+    const newsResponse = await fetch('./expanded_news_channels.json');
+    if (newsResponse.ok) {
+      const newsData = await newsResponse.json();
+      // The JSON file contains the array directly
+      appData.newsChannels = newsData;
+    }
     
     // Create comprehensive vocabulary array
-    allVocabulary = Object.values(appData.vocabularyCategories).flatMap(cat => 
-      cat.words.map(word => ({...word, category: cat.name, categoryKey: Object.keys(appData.vocabularyCategories).find(k => appData.vocabularyCategories[k] === cat)}))
-    );
-    
-    currentUser.totalWords = allVocabulary.length;
+    if (Object.keys(appData.vocabularyCategories).length > 0) {
+      allVocabulary = Object.entries(appData.vocabularyCategories).flatMap(([categoryKey, cat]) =>
+        cat.words.map(word => ({...word, category: cat.name, categoryKey}))
+      );
+      currentUser.totalWords = allVocabulary.length;
+    }
     
     console.log('✅ Enhanced data loaded successfully:', {
       vocabulary: allVocabulary.length,
@@ -120,6 +147,22 @@ async function loadEnhancedData() {
       grammarTopics: appData.grammarTopics.length,
       newsChannels: appData.newsChannels.length
     });
+    
+    // If no data loaded, use fallback
+    if (allVocabulary.length === 0) {
+      // Build a detailed error message
+      let failedSources = [];
+      if (!appData.vocabularyCategories || Object.keys(appData.vocabularyCategories).length === 0) {
+        failedSources.push('vocabularyCategories (./expanded_vocabulary.json)');
+      }
+      // You can add more checks for other sources if needed
+      let errorMsg = 'No vocabulary data loaded. ';
+      if (failedSources.length > 0) {
+        errorMsg += 'The following data sources failed to load or were empty: ' + failedSources.join(', ') + '. ';
+      }
+      errorMsg += 'Please check that the required JSON files exist, are accessible, and contain valid data.';
+      throw new Error(errorMsg);
+    }
     
   } catch (error) {
     console.error('❌ Error loading enhanced data:', error);
@@ -1941,65 +1984,31 @@ function setupProgressChart() {
     const ctx = document.getElementById('progressChart');
     if (!ctx) return;
 
+    // Create a simple progress visualization without Chart.js
     const data = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      datasets: [
-        {
-          label: 'XP Earned',
-          data: [25, 35, 28, 45, 38, 42, 50],
-          backgroundColor: 'rgba(31, 184, 205, 0.2)',
-          borderColor: '#1FB8CD',
-          borderWidth: 3,
-          fill: true,
-          tension: 0.4,
-          pointBackgroundColor: '#1FB8CD',
-          pointBorderColor: '#ffffff',
-          pointBorderWidth: 2,
-          pointRadius: 6
-        },
-        {
-          label: 'Words Learned',
-          data: [5, 7, 4, 8, 6, 9, 10],
-          backgroundColor: 'rgba(255, 193, 133, 0.2)',
-          borderColor: '#FFC185',
-          borderWidth: 3,
-          fill: true,
-          tension: 0.4,
-          pointBackgroundColor: '#FFC185',
-          pointBorderColor: '#ffffff',
-          pointBorderWidth: 2,
-          pointRadius: 6
-        }
-      ]
+      xpData: [25, 35, 28, 45, 38, 42, 50],
+      wordData: [5, 7, 4, 8, 6, 9, 10]
     };
 
-    progressChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'top'
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            grid: {
-              color: 'rgba(0, 0, 0, 0.1)'
-            }
-          },
-          x: {
-            grid: {
-              color: 'rgba(0, 0, 0, 0.1)'
-            }
-          }
-        }
-      }
-    });
+    // Create simple SVG chart
+    ctx.innerHTML = `
+      <div style="text-align: center; padding: 20px; background: var(--color-bg-1); border-radius: 8px;">
+        <h4 style="margin-bottom: 16px;">Weekly Progress</h4>
+        <div style="display: flex; justify-content: space-around; margin-bottom: 12px;">
+          ${data.labels.map((label, i) => `
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <div style="width: 20px; height: ${data.xpData[i] * 2}px; background: var(--color-primary); margin-bottom: 4px; border-radius: 2px;"></div>
+              <small>${label}</small>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display: flex; gap: 20px; justify-content: center; font-size: 14px;">
+          <div><span style="color: var(--color-primary);">■</span> XP Earned</div>
+          <div><span style="color: var(--color-warning);">■</span> Words Learned</div>
+        </div>
+      </div>
+    `;
   }, 1000);
 }
 

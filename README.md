@@ -3,7 +3,7 @@ I want to create an Angular website based on LingoHut data (webscrape it) for le
 
 
 https://www.superprof.fr/blog/compter-en-arabe/
-
+https://www.lingohut.com/fr/l69/apprenez-larabe
 
 https://leb-lingo-hub.lovable.app/  
 

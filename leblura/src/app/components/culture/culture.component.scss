@@ -1,0 +1,121 @@
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-md);
+    padding: 0 var(--space-16);
+  }
+
+  .culture-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: var(--space-8);
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+
+.content-section {
+  flex: 1;
+  padding: var(--space-32) 0;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.culture-categories {
+  margin-bottom: var(--space-32);
+}
+
+.culture-nav {
+  display: flex;
+  gap: var(--space-8);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.culture-tab {
+  background-color: var(--color-secondary);
+  border: none;
+  padding: var(--space-10) var(--space-20);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.culture-tab:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.culture-tab.active {
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.culture-section-content.active {
+  display: block;
+}
+
+.traditions-grid,
+.figures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-24);
+}
+
+.tradition-card,
+.figure-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.tradition-card:hover,
+.figure-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.tradition-name,
+.figure-name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.tradition-arabic,
+.figure-arabic {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-16);
+}
+
+.tradition-description,
+.figure-description {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}

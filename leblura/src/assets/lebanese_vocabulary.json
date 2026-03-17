@@ -1,0 +1,500 @@
+{
+  "greetings_basic": {
+    "name": "Greetings & Basic Phrases",
+    "name_arabic": "التحيات والعبارات الأساسية",
+    "words": [
+      {
+        "arabic": "أهلاً وسهلاً",
+        "pronunciation": "ahlan wa sahlan",
+        "english": "hello/welcome",
+        "french": "bonjour/bienvenue"
+      },
+      {
+        "arabic": "مرحبا",
+        "pronunciation": "marhaba",
+        "english": "hello",
+        "french": "bonjour"
+      },
+      {
+        "arabic": "صباح الخير",
+        "pronunciation": "sabah el kheir",
+        "english": "good morning",
+        "french": "bonjour"
+      },
+      {
+        "arabic": "مساء الخير",
+        "pronunciation": "masa el kheir",
+        "english": "good evening",
+        "french": "bonsoir"
+      },
+      {
+        "arabic": "تصبح على خير",
+        "pronunciation": "tisbah 3ala kheir",
+        "english": "good night",
+        "french": "bonne nuit"
+      },
+      {
+        "arabic": "مع السلامة",
+        "pronunciation": "ma3 salameh",
+        "english": "goodbye",
+        "french": "au revoir"
+      },
+      {
+        "arabic": "يلا باي",
+        "pronunciation": "yalla bye",
+        "english": "bye (casual)",
+        "french": "salut"
+      },
+      {
+        "arabic": "شكراً",
+        "pronunciation": "shukran",
+        "english": "thank you",
+        "french": "merci"
+      },
+      {
+        "arabic": "عفواً",
+        "pronunciation": "3afwan",
+        "english": "you're welcome",
+        "french": "de rien"
+      },
+      {
+        "arabic": "كيفك؟",
+        "pronunciation": "kifak?",
+        "english": "how are you? (m)",
+        "french": "comment allez-vous?"
+      },
+      {
+        "arabic": "كيفِك؟",
+        "pronunciation": "kifik?",
+        "english": "how are you? (f)",
+        "french": "comment allez-vous?"
+      },
+      {
+        "arabic": "منيح",
+        "pronunciation": "mnih",
+        "english": "good/fine",
+        "french": "bien"
+      },
+      {
+        "arabic": "الله يعطيك العافية",
+        "pronunciation": "allah ya3tik el 3afye",
+        "english": "thank you (for work)",
+        "french": "merci (pour le travail)"
+      },
+      {
+        "arabic": "ما في مشكلة",
+        "pronunciation": "ma fi mushkile",
+        "english": "no problem",
+        "french": "pas de problème"
+      },
+      {
+        "arabic": "إن شاء الله",
+        "pronunciation": "inshallah",
+        "english": "God willing",
+        "french": "si Dieu le veut"
+      }
+    ]
+  },
+  "family_relationships": {
+    "name": "Family & Relationships",
+    "name_arabic": "العائلة والعلاقات",
+    "words": [
+      {
+        "arabic": "بيت",
+        "pronunciation": "bayt",
+        "english": "house/home",
+        "french": "maison"
+      },
+      {
+        "arabic": "أهل",
+        "pronunciation": "ahl",
+        "english": "family",
+        "french": "famille"
+      },
+      {
+        "arabic": "بابا",
+        "pronunciation": "baba",
+        "english": "dad",
+        "french": "papa"
+      },
+      {
+        "arabic": "ماما",
+        "pronunciation": "mama",
+        "english": "mom",
+        "french": "maman"
+      },
+      {
+        "arabic": "أخ",
+        "pronunciation": "akh",
+        "english": "brother",
+        "french": "frère"
+      },
+      {
+        "arabic": "أخت",
+        "pronunciation": "ukht",
+        "english": "sister",
+        "french": "sœur"
+      },
+      {
+        "arabic": "خالو",
+        "pronunciation": "khalo",
+        "english": "maternal uncle",
+        "french": "oncle maternel"
+      },
+      {
+        "arabic": "خالتو",
+        "pronunciation": "khalto",
+        "english": "maternal aunt",
+        "french": "tante maternelle"
+      },
+      {
+        "arabic": "عمو",
+        "pronunciation": "3ammo",
+        "english": "paternal uncle",
+        "french": "oncle paternel"
+      },
+      {
+        "arabic": "عمتو",
+        "pronunciation": "3amto",
+        "english": "paternal aunt",
+        "french": "tante paternelle"
+      },
+      {
+        "arabic": "صاحب",
+        "pronunciation": "saheb",
+        "english": "friend (m)",
+        "french": "ami"
+      },
+      {
+        "arabic": "صاحبة",
+        "pronunciation": "sahbe",
+        "english": "friend (f)",
+        "french": "amie"
+      },
+      {
+        "arabic": "حبيبي",
+        "pronunciation": "habibi",
+        "english": "my dear/love (m)",
+        "french": "mon chéri"
+      },
+      {
+        "arabic": "حبيبتي",
+        "pronunciation": "habibti",
+        "english": "my dear/love (f)",
+        "french": "ma chérie"
+      },
+      {
+        "arabic": "جدو",
+        "pronunciation": "jiddo",
+        "english": "grandfather",
+        "french": "grand-père"
+      },
+      {
+        "arabic": "تيتا",
+        "pronunciation": "teta",
+        "english": "grandmother",
+        "french": "grand-mère"
+      }
+    ]
+  },
+  "food_dining": {
+    "name": "Food & Dining",
+    "name_arabic": "الطعام والشراب",
+    "words": [
+      {
+        "arabic": "أكل",
+        "pronunciation": "akl",
+        "english": "food",
+        "french": "nourriture"
+      },
+      {
+        "arabic": "مي",
+        "pronunciation": "mayy",
+        "english": "water",
+        "french": "eau"
+      },
+      {
+        "arabic": "خبز",
+        "pronunciation": "khubz",
+        "english": "bread",
+        "french": "pain"
+      },
+      {
+        "arabic": "حمص",
+        "pronunciation": "hummus",
+        "english": "hummus",
+        "french": "houmous"
+      },
+      {
+        "arabic": "قهوة",
+        "pronunciation": "ahweh",
+        "english": "coffee",
+        "french": "café"
+      },
+      {
+        "arabic": "شاي",
+        "pronunciation": "shay",
+        "english": "tea",
+        "french": "thé"
+      },
+      {
+        "arabic": "لبن",
+        "pronunciation": "laban",
+        "english": "yogurt/milk",
+        "french": "yaourt/lait"
+      },
+      {
+        "arabic": "جبنة",
+        "pronunciation": "jibneh",
+        "english": "cheese",
+        "french": "fromage"
+      },
+      {
+        "arabic": "زيتون",
+        "pronunciation": "zaytoun",
+        "english": "olives",
+        "french": "olives"
+      },
+      {
+        "arabic": "تبولة",
+        "pronunciation": "tabboule",
+        "english": "tabbouleh",
+        "french": "taboulé"
+      },
+      {
+        "arabic": "فتوش",
+        "pronunciation": "fattoush",
+        "english": "fattoush salad",
+        "french": "salade fattoush"
+      },
+      {
+        "arabic": "كبة",
+        "pronunciation": "kibbeh",
+        "english": "kibbeh",
+        "french": "kibbé"
+      },
+      {
+        "arabic": "شاورما",
+        "pronunciation": "shawarma",
+        "english": "shawarma",
+        "french": "chawarma"
+      },
+      {
+        "arabic": "منقوشة",
+        "pronunciation": "man2oushe",
+        "english": "manakish",
+        "french": "manakish"
+      },
+      {
+        "arabic": "عرق",
+        "pronunciation": "arak",
+        "english": "arak (anise drink)",
+        "french": "arak"
+      },
+      {
+        "arabic": "مزة",
+        "pronunciation": "mazze",
+        "english": "appetizers",
+        "french": "mezzé"
+      }
+    ]
+  },
+  "common_expressions": {
+    "name": "Common Expressions",
+    "name_arabic": "التعابير الشائعة",
+    "words": [
+      {
+        "arabic": "يلا",
+        "pronunciation": "yalla",
+        "english": "let's go/come on",
+        "french": "allons-y"
+      },
+      {
+        "arabic": "خلص",
+        "pronunciation": "khalas",
+        "english": "finished/enough",
+        "french": "fini/assez"
+      },
+      {
+        "arabic": "شو؟",
+        "pronunciation": "shu?",
+        "english": "what?",
+        "french": "quoi?"
+      },
+      {
+        "arabic": "وين؟",
+        "pronunciation": "wayn?",
+        "english": "where?",
+        "french": "où?"
+      },
+      {
+        "arabic": "قديش؟",
+        "pronunciation": "adeysh?",
+        "english": "how much?",
+        "french": "combien?"
+      },
+      {
+        "arabic": "ما بعرف",
+        "pronunciation": "ma ba3ref",
+        "english": "I don't know",
+        "french": "je ne sais pas"
+      },
+      {
+        "arabic": "بدي",
+        "pronunciation": "biddi",
+        "english": "I want",
+        "french": "je veux"
+      },
+      {
+        "arabic": "ما بدي",
+        "pronunciation": "ma biddi",
+        "english": "I don't want",
+        "french": "je ne veux pas"
+      },
+      {
+        "arabic": "بحبك",
+        "pronunciation": "bahebak/bahebik",
+        "english": "I love you",
+        "french": "je t'aime"
+      },
+      {
+        "arabic": "تعبان",
+        "pronunciation": "ta3ban",
+        "english": "tired",
+        "french": "fatigué"
+      },
+      {
+        "arabic": "زهقان",
+        "pronunciation": "zah2an",
+        "english": "bored",
+        "french": "ennuyé"
+      },
+      {
+        "arabic": "مبسوط",
+        "pronunciation": "mabsout",
+        "english": "happy",
+        "french": "heureux"
+      },
+      {
+        "arabic": "زعلان",
+        "pronunciation": "za3lan",
+        "english": "upset/angry",
+        "french": "fâché"
+      },
+      {
+        "arabic": "يعطيك العافية",
+        "pronunciation": "ya3tik el 3afye",
+        "english": "well done/thank you",
+        "french": "bravo/merci"
+      },
+      {
+        "arabic": "الله يسلمك",
+        "pronunciation": "allah ysalmak",
+        "english": "response to ya3tik el 3afye",
+        "french": "réponse à ya3tik el 3afye"
+      }
+    ]
+  },
+  "directions_places": {
+    "name": "Directions & Places",
+    "name_arabic": "الاتجاهات والأماكن",
+    "words": [
+      {
+        "arabic": "وين رايح؟",
+        "pronunciation": "wayn rayeh?",
+        "english": "where are you going? (m)",
+        "french": "où allez-vous?"
+      },
+      {
+        "arabic": "وين رايحة؟",
+        "pronunciation": "wayn rayhe?",
+        "english": "where are you going? (f)",
+        "french": "où allez-vous?"
+      },
+      {
+        "arabic": "يمين",
+        "pronunciation": "yameen",
+        "english": "right",
+        "french": "droite"
+      },
+      {
+        "arabic": "شمال",
+        "pronunciation": "shemal",
+        "english": "left",
+        "french": "gauche"
+      },
+      {
+        "arabic": "دغري",
+        "pronunciation": "dughri",
+        "english": "straight",
+        "french": "tout droit"
+      },
+      {
+        "arabic": "بعيد",
+        "pronunciation": "ba3eed",
+        "english": "far",
+        "french": "loin"
+      },
+      {
+        "arabic": "قريب",
+        "pronunciation": "areeb",
+        "english": "close/near",
+        "french": "proche"
+      },
+      {
+        "arabic": "هون",
+        "pronunciation": "houn",
+        "english": "here",
+        "french": "ici"
+      },
+      {
+        "arabic": "هونيك",
+        "pronunciation": "houneek",
+        "english": "there",
+        "french": "là-bas"
+      },
+      {
+        "arabic": "مطعم",
+        "pronunciation": "mat3am",
+        "english": "restaurant",
+        "french": "restaurant"
+      },
+      {
+        "arabic": "سوبرماركت",
+        "pronunciation": "supermarket",
+        "english": "supermarket",
+        "french": "supermarché"
+      },
+      {
+        "arabic": "بنك",
+        "pronunciation": "bank",
+        "english": "bank",
+        "french": "banque"
+      },
+      {
+        "arabic": "صيدلية",
+        "pronunciation": "saydaliyyeh",
+        "english": "pharmacy",
+        "french": "pharmacie"
+      },
+      {
+        "arabic": "مستشفى",
+        "pronunciation": "mustashfa",
+        "english": "hospital",
+        "french": "hôpital"
+      },
+      {
+        "arabic": "جامعة",
+        "pronunciation": "jem3a",
+        "english": "university",
+        "french": "université"
+      },
+      {
+        "arabic": "مدرسة",
+        "pronunciation": "madrase",
+        "english": "school",
+        "french": "école"
+      }
+    ]
+  }
+}

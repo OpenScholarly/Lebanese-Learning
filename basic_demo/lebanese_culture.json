@@ -1,0 +1,76 @@
+{
+  "traditions": [
+    {
+      "name": "Dabke Dance",
+      "name_arabic": "دبكة",
+      "description": "Traditional Lebanese folk dance performed in lines",
+      "origin": "Originally helped fix mud roofs, became celebration dance",
+      "occasions": [
+        "Weddings",
+        "Festivals",
+        "Cultural celebrations"
+      ]
+    },
+    {
+      "name": "Zaffe Wedding Procession",
+      "name_arabic": "زفة",
+      "description": "Traditional wedding procession with drummers and dancers",
+      "elements": [
+        "Derbake drums",
+        "Traditional music",
+        "Community participation"
+      ]
+    },
+    {
+      "name": "Lebanese Hospitality",
+      "name_arabic": "الضيافة اللبنانية",
+      "description": "Sacred tradition of welcoming guests",
+      "customs": [
+        "Offering coffee/tea",
+        "Three kisses greeting",
+        "Never refusing hospitality"
+      ]
+    },
+    {
+      "name": "Al Zajal",
+      "name_arabic": "الزجل",
+      "description": "Improvised poetry competitions",
+      "characteristics": [
+        "Spontaneous",
+        "Rhyming",
+        "Cultural themes"
+      ]
+    }
+  ],
+  "customs": [
+    {
+      "name": "Breaking the Evil Eye",
+      "description": "Breaking unbreakable coffee cups to ward off bad luck"
+    },
+    {
+      "name": "Knocking on Wood",
+      "description": "Preventing bad luck when mentioning good fortune"
+    },
+    {
+      "name": "Three Kisses Greeting",
+      "description": "Left-right-left cheek kissing for everyone in the room"
+    },
+    {
+      "name": "Offering Diyefe",
+      "description": "Always offering treats to guests as sign of respect"
+    }
+  ],
+  "famous_figures": [
+    {
+      "name": "Fairuz",
+      "name_arabic": "فيروز",
+      "real_name": "Nouhad Wadi Haddad",
+      "title": "Ambassador to the Stars, Neighbor to the Moon",
+      "famous_songs": [
+        "Behhbak Ya Lebnan",
+        "Ya Hawa Beirut"
+      ],
+      "birth_year": 1935
+    }
+  ]
+}

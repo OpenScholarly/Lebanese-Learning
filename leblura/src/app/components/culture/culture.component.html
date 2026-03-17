@@ -1,0 +1,25 @@
+<section id="culture" class="content-section">
+  <div class="container">
+    <h1>🎭 Lebanese Culture & Traditions</h1>
+    <p>Immerse yourself in authentic Lebanese culture, traditions, and customs</p>
+
+    <div class="culture-categories">
+      <div class="culture-nav">
+        <button class="culture-tab" data-tab="traditions" *ngFor="let tradition of culturalTraditions" [class.active]="tradition.category === activeCategory"
+          (click)="setActiveCategory(tradition.category)">
+          {{ tradition.title }}
+        </button>
+      </div>
+    </div>
+
+    <div class="culture-content">
+      <div id="traditions-content" class="culture-section-content active">
+        <div class="traditions-grid" id="traditionsGrid">
+          <h3>{{ activeTradition.title }}</h3>
+          <p>{{ activeTradition.description }}</p>
+          <img [src]="activeTradition.imageUrl" alt="{{ activeTradition.title }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

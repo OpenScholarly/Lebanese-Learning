@@ -1,0 +1,128 @@
+<section id="vocabulary" class="content-section">
+  <div class="container">
+    <div class="vocabulary-header">
+      <h1>Enhanced Vocabulary Learning</h1>
+      <p>Master 130+ authentic Lebanese Arabic words across 7 comprehensive categories</p>
+
+      <div class="vocabulary-controls">
+        <div class="search-filter">
+          <input
+            type="text"
+            placeholder="Search vocabulary..."
+            class="form-control"
+            [value]="searchTerm"
+            (input)="onSearch($event)">
+          <select
+            class="form-control"
+            [value]="selectedDifficulty"
+            (change)="onDifficultyChange($event)">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <p>Loading vocabulary data...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error" class="error-state">
+      <p>{{ error }}</p>
+    </div>
+
+    <!-- Category Overview -->
+    <div class="category-overview" *ngIf="!loading">
+      <div class="category-grid">
+        <div
+          *ngFor="let category of filteredCategories"
+          class="category-card"
+          [class.active]="currentCategory === category"
+          (click)="selectCategory(category)">
+          <h3>{{ category.name }}</h3>
+          <p class="arabic-name">{{ category?.name_arabic }}</p>
+          <div class="word-count">{{ category.words?.length || 0 }} words</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Learning Section -->
+    <div class="active-learning" *ngIf="currentCategory && !loading">
+      <div class="flashcard-section">
+        <div class="flashcard-controls-top">
+          <div class="category-selector">
+            <h3>{{ currentCategory.name }}</h3>
+            <p>{{ currentCategory.name_arabic }}</p>
+          </div>
+          <div class="learning-mode">
+            <select
+              class="form-control"
+              [value]="learningMode"
+              (change)="onLearningModeChange($event)">
+              <option value="flashcard">Flashcard Mode</option>
+              <option value="quiz">Quiz Mode</option>
+              <option value="listening">Listening Mode</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" *ngIf="currentCategory">
+          <div class="progress-fill" [style.width.%]="getProgressPercentage()"></div>
+          <span class="progress-text">
+            {{ currentCardIndex + 1 }} / {{ currentCategory.words?.length || 0 }} words
+          </span>
+        </div>
+
+        <!-- Flashcard -->
+        <div class="flashcard-container" *ngIf="currentWord">
+          <div class="flashcard enhanced-card" [class.flipped]="isCardFlipped" (click)="flipCard()">
+            <div class="flashcard-front">
+              <div class="card-category">{{ currentCategory.name }}</div>
+              <div class="arabic-text">{{ currentWord.arabic }}</div>
+              <div class="pronunciation">{{ currentWord.pronunciation }}</div>
+              <div class="card-actions">
+                <button class="btn btn--sm audio-btn" (click)="playAudio(false); $event.stopPropagation()">
+                  🔊 Play
+                </button>
+                <button class="btn btn--sm btn--outline" (click)="playAudio(true); $event.stopPropagation()">
+                  🐌 Slow
+                </button>
+              </div>
+            </div>
+
+            <div class="flashcard-back">
+              <div class="translations">
+                <div class="translation english">
+                  <label>English:</label>
+                  <span>{{ currentWord.english }}</span>
+                </div>
+                <div class="translation french">
+                  <label>French:</label>
+                  <span>{{ currentWord.french }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flashcard-controls" *ngIf="currentCategory">
+          <button class="btn btn--outline" (click)="prevCard()" [disabled]="currentCategory.words.length <= 1">
+            ← Previous
+          </button>
+          <button class="btn btn--outline" (click)="flipCard()">
+            {{ isCardFlipped ? 'Show Front' : 'Show Answer' }}
+          </button>
+          <button class="btn btn--outline" (click)="nextCard()" [disabled]="currentCategory.words.length <= 1">
+            Next →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

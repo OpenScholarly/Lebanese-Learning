@@ -1,0 +1,136 @@
+<section id="dashboard" class="content-section active">
+  <div class="container">
+    <div class="welcome-header">
+      <h1>أهلاً وسهلاً! Welcome to Enhanced Lebanese Arabic!</h1>
+      <p>Master Lebanese Arabic with authentic vocabulary, cultural immersion, and media content</p>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <p>Loading dashboard data...</p>
+    </div>
+
+    <!-- User Progress Section -->
+    <div class="user-progress" *ngIf="currentUser && !loading">
+      <div class="progress-card">
+        <h3>Your Learning Journey</h3>
+        <div class="progress-stats">
+          <div class="progress-item">
+            <div class="progress-label">Overall Progress</div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getLearningProgress()"></div>
+            </div>
+            <span>{{ currentUser.stats.wordsLearned }} / {{ totalVocabularyWords }} words</span>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">Daily Goal</div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getDailyGoalProgress()"></div>
+            </div>
+            <span>Progress towards {{ currentUser.stats.dailyGoal }} words today</span>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">Level {{ currentUser.level }} Progress</div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getNextLevelProgress()"></div>
+            </div>
+            <span>{{ currentUser.xp }} XP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="quick-stats" *ngIf="!loading">
+      <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-content">
+          <div class="stat-number">{{ totalVocabularyWords }}</div>
+          <div class="stat-label">Vocabulary Words</div>
+          <div class="stat-sub">{{ vocabularyCategories }} categories</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📻</div>
+        <div class="stat-content">
+          <div class="stat-number">{{ totalRadioStations }}</div>
+          <div class="stat-label">Radio Stations</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎧</div>
+        <div class="stat-content">
+          <div class="stat-number">{{ totalPodcasts }}</div>
+          <div class="stat-label">Podcasts</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎭</div>
+        <div class="stat-content">
+          <div class="stat-number">{{ totalCultureTopics }}</div>
+          <div class="stat-label">Cultural Topics</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Stats -->
+    <div class="user-stats" *ngIf="currentUser && !loading">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">{{ currentUser.stats.streakDays }}</div>
+          <div class="stat-label">🔥 Day Streak</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ currentUser.stats.masteredWords }}</div>
+          <div class="stat-label">✅ Mastered Words</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ getStudyTimeHours() }}</div>
+          <div class="stat-label">⏱️ Study Hours</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ getMasteryProgress() }}%</div>
+          <div class="stat-label">📈 Mastery Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Achievements -->
+    <div class="achievements-section" *ngIf="currentUser && !loading && getRecentAchievements().length > 0">
+      <h3>Recent Achievements</h3>
+      <div class="achievements-list">
+        <div
+          *ngFor="let achievement of getRecentAchievements()"
+          class="achievement-item">
+          <div class="achievement-icon">🏆</div>
+          <div class="achievement-content">
+            <div class="achievement-name">{{ achievement.name }}</div>
+            <div class="achievement-description">{{ achievement.description }}</div>
+            <div class="achievement-date">{{ achievement.dateEarned | date:'short' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Content -->
+    <div class="featured-content" *ngIf="!loading">
+      <div class="card featured-card">
+        <div class="card__body">
+          <h3>🎯 Today's Challenge</h3>
+          <p>Master Lebanese vocabulary and immerse yourself in the culture!</p>
+          <div class="challenge-options">
+            <button class="btn btn--primary" data-section="vocabulary" routerLink="/vocabulary">
+              📚 Practice Vocabulary
+            </button>
+            <button class="btn btn--outline" data-section="radio" routerLink="/radio">
+              📻 Listen to Radio
+            </button>
+            <button class="btn btn--outline" data-section="culture" routerLink="/culture">
+              🎭 Explore Culture
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

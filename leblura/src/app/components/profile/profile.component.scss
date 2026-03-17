@@ -1,0 +1,190 @@
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+@media (min-width: 480px) {
+}
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-md);
+    padding: 0 var(--space-16);
+  }
+  .quick-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+
+.content-section {
+  flex: 1;
+  padding: var(--space-32) 0;
+}
+
+.content-section.active {
+  display: block;
+}
+
+
+
+
+.profile-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-32);
+}
+
+.profile-overview .card {
+  margin-bottom: var(--space-24);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  margin-bottom: var(--space-24);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-teal-400)
+  );
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-4xl);
+  color: var(--color-btn-primary-text);
+}
+
+.profile-info h3 {
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.level-badge-large {
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  padding: var(--space-8) var(--space-20);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  display: inline-block;
+  margin-bottom: var(--space-12);
+}
+
+.xp-progress span {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.achievement-badges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+.badge {
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+.badge.earned {
+  background-color: var(--color-bg-3);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.badge.pending {
+  background-color: var(--color-bg-2);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  opacity: 0.6;
+}
+
+.detailed-analytics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.metric {
+  text-align: center;
+  padding: var(--space-16);
+  background-color: var(--color-bg-1);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-border);
+}
+
+.metric-value {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.metric-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.progress-chart {
+  margin-top: var(--space-24);
+}
+
+.settings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin: 0;
+}

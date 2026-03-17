@@ -1,0 +1,14 @@
+<header class="top-bar">
+  <button class="menu-btn" id="menuToggle" (click)="sidebarService.toggle(); $event.stopPropagation()">☰</button>
+  <div class="search-container">
+    <input type="text" id="globalSearch" placeholder="Search vocabulary, culture..." class="search-input">
+    <button class="search-btn" id="searchBtn">🔍</button>
+  </div>
+  <div class="user-info">
+    <div class="streak-display">🔥 <span id="streakDays">{{ user.stats.streakDays }}</span></div>
+    <div class="xp-display">
+      <span class="xp-text">XP: <span id="userXP">{{ user.xp }}</span></span>
+      <div class="level-badge" id="userLevel">Level {{ user.level }}</div>
+    </div>
+  </div>
+</header>

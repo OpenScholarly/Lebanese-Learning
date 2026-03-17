@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Ya Rayt",
+    "title_arabic": "يا ريت",
+    "type": "Drama Series",
+    "language": "Lebanese/Syrian Arabic",
+    "description": "Lebanese and Syrian drama series perfect for language learning",
+    "subtitles": [
+      "Arabic",
+      "English"
+    ],
+    "platform": "YouTube"
+  },
+  {
+    "title": "Al Hayba",
+    "title_arabic": "الهيبة",
+    "type": "Action Drama",
+    "language": "Lebanese Arabic",
+    "description": "Popular Lebanese action series with Taym Hassan",
+    "seasons": 3,
+    "platforms": [
+      "Netflix",
+      "Shahid"
+    ]
+  },
+  {
+    "title": "Casanova",
+    "title_arabic": "كازانوفا",
+    "type": "Drama",
+    "language": "Lebanese Arabic",
+    "description": "MTV Lebanon drama series",
+    "platform": "MTV Lebanon"
+  },
+  {
+    "title": "Auberge",
+    "title_arabic": "أوبرج",
+    "type": "Social Drama",
+    "language": "Lebanese Arabic",
+    "description": "Series about Lebanese social issues",
+    "platform": "MTV Lebanon"
+  },
+  {
+    "title": "Habib Mira",
+    "title_arabic": "حبيب ميرا",
+    "type": "Comedy",
+    "language": "Lebanese Arabic",
+    "description": "Lebanese comedy starring Ziad Bourji and Dalida Khalil",
+    "platform": "MTV Lebanon"
+  }
+]

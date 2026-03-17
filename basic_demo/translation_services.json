@@ -1,0 +1,99 @@
+{
+  "apis": [
+    {
+      "name": "Google Cloud Translation",
+      "url": "https://cloud.google.com/translate",
+      "languages": [
+        "ar",
+        "en",
+        "fr"
+      ],
+      "features": [
+        "real_time",
+        "batch",
+        "auto_detect"
+      ],
+      "pricing": "free_tier_500k_chars"
+    },
+    {
+      "name": "Microsoft Azure Translator",
+      "url": "https://azure.microsoft.com/en-us/products/ai-services/ai-translator",
+      "languages": [
+        "ar",
+        "en",
+        "fr"
+      ],
+      "features": [
+        "real_time",
+        "document_translation",
+        "custom_models"
+      ],
+      "pricing": "free_tier_2m_chars"
+    },
+    {
+      "name": "DeepL Pro",
+      "url": "https://www.deepl.com/pro-api",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "note": "No Arabic support yet",
+      "features": [
+        "high_quality",
+        "formality_control"
+      ]
+    }
+  ],
+  "tts_services": [
+    {
+      "name": "XTTS v2 (Coqui)",
+      "url": "https://huggingface.co/coqui/XTTS-v2",
+      "languages": [
+        "ar",
+        "en",
+        "fr"
+      ],
+      "features": [
+        "voice_cloning",
+        "multilingual",
+        "zero_shot"
+      ],
+      "arabic_dialects": [
+        "msa",
+        "levantine_capable"
+      ],
+      "note": "Open source, pre-trained on Arabic"
+    },
+    {
+      "name": "ElevenLabs",
+      "url": "https://elevenlabs.io/text-to-speech/arabic",
+      "languages": [
+        "ar",
+        "en",
+        "fr"
+      ],
+      "features": [
+        "voice_cloning",
+        "emotion",
+        "real_time"
+      ],
+      "pricing": "freemium"
+    },
+    {
+      "name": "Azure Speech Services",
+      "url": "https://azure.microsoft.com/en-us/products/ai-services/ai-speech",
+      "languages": [
+        "ar-LB",
+        "ar-SA",
+        "en",
+        "fr"
+      ],
+      "features": [
+        "neural_voices",
+        "real_time",
+        "ssml"
+      ],
+      "lebanese_support": "partial"
+    }
+  ]
+}

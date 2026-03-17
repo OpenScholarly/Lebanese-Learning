@@ -1,0 +1,42 @@
+<section id="podcasts" class="content-section">
+  <div class="container">
+    <h1>🎧 Lebanese Arabic Podcasts</h1>
+    <p>Learn from expert teachers and native speakers through engaging podcast content</p>
+
+    <div class="podcast-filters">
+      <select id="podcastLevel" class="form-control">
+        <option value="all">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+    </div>
+
+    <div class="podcast-grid" id="podcastGrid">
+      <!-- Podcasts will be populated -->
+    </div>
+
+    <div class="podcast-player" id="podcastPlayer" style="">
+      <div class="card">
+        <div class="card__body">
+          <h3 id="currentPodcastTitle">Podcast Player</h3>
+          <p id="currentPodcastDescription"></p>
+          <div class="audio-controls">
+            <button class="btn btn--outline">⏮️</button>
+            <button class="btn btn--primary">▶️</button>
+            <button class="btn btn--outline">⏭️</button>
+            <div class="speed-control">
+              <label>Speed:</label>
+              <select>
+                <option value="0.75">0.75x</option>
+                <option value="1" selected>1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

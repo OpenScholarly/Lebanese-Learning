@@ -1,0 +1,16 @@
+<nav class="sidebar" id="sidebar" [ngClass]="{'open': isSideBarOpen, 'closed': !isSideBarOpen}">
+  <div class="sidebar-header">
+    <h2>LebaneseLingo Pro</h2>
+    <button class="close-btn" id="closeSidebar" (click)="sidebarService.close()">&times;</button>
+  </div>
+  <ul class="nav-menu">
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.route" [attr.data-section]="item.section" class="nav-link">
+        <span>{{ item.icon }}</span> {{ item.name }}
+      </a>
+    </li>
+  </ul>
+  <div class="sidebar-footer">
+    <button class="btn btn--sm btn--outline" id="themeToggle" (click)="toggleTheme()">🌙 Dark Mode</button>
+  </div>
+</nav>

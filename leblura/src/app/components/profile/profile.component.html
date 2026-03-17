@@ -1,0 +1,109 @@
+<section id="profile" class="content-section">
+  <div class="container">
+    <h1>👤 Profile & Analytics</h1>
+    <div class="profile-dashboard">
+      <div class="profile-overview">
+        <div class="card">
+          <div class="card__body">
+            <div class="profile-header">
+              <div class="profile-avatar">👤</div>
+              <div class="profile-info">
+                <h3>Lebanese Arabic Learner</h3>
+                <div class="level-badge-large" id="profileLevel">Intermediate</div>
+                <div class="xp-progress">
+                  <span>XP: <span id="profileXP">{{ user.xp }}</span> / 1000</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="profileProgress" style="width: 45%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="achievement-badges">
+              <div class="badge earned">🏆 First Week</div>
+              <div class="badge earned">📚 Word Master</div>
+              <div class="badge pending">🔥 Hot Streak</div>
+              <div class="badge pending">🎭 Culture Expert</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detailed-analytics">
+        <div class="card">
+          <div class="card__body">
+            <h3>Learning Analytics</h3>
+            <div class="analytics-grid">
+              <div class="metric">
+                <div class="metric-value" id="totalWords">{{ user.stats.totalWords }}</div>
+                <div class="metric-label">Total Words</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="masteredWords">{{ user.stats.masteredWords }}</div>
+                <div class="metric-label">Mastered</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="studyTime">{{ user.stats.studyTime }}h</div>
+                <div class="metric-label">Study Time</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="streakCount">{{ user.stats.streakDays }}</div>
+                <div class="metric-label">Day Streak</div>
+              </div>
+            </div>
+
+            <div class="progress-chart">
+              <canvas id="progressChart" style="position: relative; height: 300px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <h3>⚙️ Settings</h3>
+            <div class="settings-grid">
+              <div class="form-group">
+                <label class="form-label">Learning Goal</label>
+                <select id="dailyGoal" class="form-control">
+                  <option value="10">10 minutes/day</option>
+                  <option value="15">15 minutes/day</option>
+                  <option value="30" selected>30 minutes/day</option>
+                  <option value="60">1 hour/day</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Difficulty Level</label>
+                <select id="difficultyLevel" class="form-control">
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate" selected>Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Audio Settings</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" id="audioEnabled" checked> Enable TTS</label>
+                  <label><input type="checkbox" id="slowAudioEnabled" checked> Slow Audio Option</label>
+                  <label><input type="checkbox" id="autoPlayEnabled"> Auto-play Audio</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Notifications</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" id="dailyReminders" checked> Daily Reminders</label>
+                  <label><input type="checkbox" id="streakReminders" checked> Streak Reminders</label>
+                  <label><input type="checkbox" id="achievementNotifications" checked> Achievement Alerts</label>
+                </div>
+              </div>
+
+              <button class="btn btn--primary btn--full-width" id="saveSettings">Save Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
